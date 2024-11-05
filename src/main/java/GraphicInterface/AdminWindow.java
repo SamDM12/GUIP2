@@ -39,6 +39,7 @@ public class AdminWindow extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +98,13 @@ public class AdminWindow extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Asignar Competidor a Competición");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -124,6 +132,8 @@ public class AdminWindow extends javax.swing.JFrame {
                 .addGap(97, 97, 97)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(67, 67, 67)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(222, 222, 222))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -146,7 +156,8 @@ public class AdminWindow extends javax.swing.JFrame {
                         .addGap(81, 81, 81)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
                 .addGap(44, 44, 44)
                 .addComponent(jButton4)
                 .addGap(3, 3, 3)
@@ -216,6 +227,12 @@ public class AdminWindow extends javax.swing.JFrame {
         window.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        AddCompetitionXCompetitor window = new AddCompetitionXCompetitor();
+        window.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,6 +274,7 @@ public class AdminWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;

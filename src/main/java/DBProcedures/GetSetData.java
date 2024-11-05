@@ -181,6 +181,34 @@ public class GetSetData {
         }
     }
     
+    public void insertCompetitorXCompetition(int IDCompetitor,int IDCompetition, int TimeRecorded, int Score, int positionRecorded){
+        
+        try {
+            stmt = connection.getConn().prepareCall("{CALL AddCompetitorXCompetition(?, ?, ?, ?, ?)}");
+            stmt.setInt(1, IDCompetitor);
+            stmt.setInt(2, IDCompetition);
+            stmt.setInt(3, TimeRecorded);
+            stmt.setInt(4, Score);
+            stmt.setInt(5, positionRecorded);
+            stmt.execute();
+            System.out.println("Competidor y competencia vinculados");
+            JOptionPane.showMessageDialog(null, "La competición y el competidor se ha añadido exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
     public void insertCountry(String countryName){
         try{
             stmt = connection.getConn().prepareCall("{CALL addCountry(?)}");
