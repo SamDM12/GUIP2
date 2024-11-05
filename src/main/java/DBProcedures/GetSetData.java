@@ -152,6 +152,35 @@ public class GetSetData {
         }
         }
     }
+    
+    
+    public void insertCompetition(String CompetitionName, LocalDate CompetitionDate, String CompetitionDescription){
+        
+        try {
+            stmt = connection.getConn().prepareCall("{CALL AddCompetition(?, ?, ?)}");
+            stmt.setString(1, CompetitionName);
+            Date sqlDate = Date.valueOf(CompetitionDate);
+            stmt.setDate(2, sqlDate);
+            stmt.setString(3, CompetitionDescription);
+            stmt.execute();
+            System.out.println("Competición añadida");
+            JOptionPane.showMessageDialog(null, "La competición se ha añadido exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
     public void insertCountry(String countryName){
         try{
             stmt = connection.getConn().prepareCall("{CALL addCountry(?)}");
