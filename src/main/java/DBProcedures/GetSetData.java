@@ -5,9 +5,11 @@
 package DBProcedures;
 import Connection.DataBaseConnection;
 import com.mycompany.project1db.*;
+import java.awt.List;
 import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -38,8 +40,9 @@ public class GetSetData {
         return List;
     }
     public void insertDisability(String disabilityName){
+        DataBaseConnection connectionC = new DataBaseConnection();
         try {
-            stmt = connection.getConn().prepareCall("{CALL AddDisability(?)}");
+            stmt = connectionC.getConn().prepareCall("{CALL AddDisability(?)}");
             stmt.setString(1, disabilityName);
             stmt.execute();
         } catch (SQLException ex) {
@@ -49,7 +52,8 @@ public class GetSetData {
     
     public ArrayList<Country> getCountries(){
         ArrayList<Country> List = new ArrayList<>();
-        try (ResultSet result = connection.getConn().prepareCall("{CALL getCountry()}").executeQuery()) {
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try (ResultSet result = connectionC.getConn().prepareCall("{CALL getCountry()}").executeQuery()) {
             while(result.next()){
                 Country country = new Country(result.getString("COUNTRY_NAME"));
                 List.add(country);
@@ -79,9 +83,9 @@ public class GetSetData {
     public void insertPerson(int IdentificationNumber, String FirstName, 
             String SecondName, String FirstLastName, String SecondLastName, 
             LocalDate BirthDate, String CountryName, String GenderName, String IdentificationName){
-        
+        DataBaseConnection connectionC = new DataBaseConnection();
         try {
-            stmt = connection.getConn().prepareCall("{CALL AddPerson(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+            stmt = connectionC.getConn().prepareCall("{CALL AddPerson(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
             stmt.setInt(1, IdentificationNumber);
             stmt.setString(2, FirstName);
             stmt.setString(3, SecondName);
@@ -128,9 +132,9 @@ public class GetSetData {
     
     
     public void insertCompetitor(int IdentificationNumber, int ClasificationScore, String TeamName){
-        
+        DataBaseConnection connectionC = new DataBaseConnection();
         try {
-            stmt = connection.getConn().prepareCall("{CALL AddCompetitor(?, ?, ?)}");
+            stmt = connectionC.getConn().prepareCall("{CALL AddCompetitor(?, ?, ?)}");
             stmt.setInt(1, IdentificationNumber);
             stmt.setInt(2, ClasificationScore);
             stmt.setString(3, TeamName);
@@ -142,22 +146,23 @@ public class GetSetData {
                                       "Error SQL", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-        // Cerrar el statement y la conexión después de la ejecución
-        try {
-            if (stmt != null) stmt.close();
-            if (connection.getConn() != null) connection.getConn().close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
-                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
-        }
+            try {
+                if (stmt != null) stmt.close();
+                if (connection.getConn() != null && !connection.getConn().isClosed()) {
+                    connection.getConn().close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                              "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
     
     
     public void insertCompetition(String CompetitionName, LocalDate CompetitionDate, String CompetitionDescription){
-        
+        DataBaseConnection connectionC = new DataBaseConnection();
         try {
-            stmt = connection.getConn().prepareCall("{CALL AddCompetition(?, ?, ?)}");
+            stmt = connectionC.getConn().prepareCall("{CALL AddCompetition(?, ?, ?)}");
             stmt.setString(1, CompetitionName);
             Date sqlDate = Date.valueOf(CompetitionDate);
             stmt.setDate(2, sqlDate);
@@ -182,9 +187,9 @@ public class GetSetData {
     }
     
     public void insertCompetitorXCompetition(int IDCompetitor,int IDCompetition, int TimeRecorded, int Score, int positionRecorded){
-        
+        DataBaseConnection connectionC = new DataBaseConnection();
         try {
-            stmt = connection.getConn().prepareCall("{CALL AddCompetitorXCompetition(?, ?, ?, ?, ?)}");
+            stmt = connectionC.getConn().prepareCall("{CALL AddCompetitorXCompetition(?, ?, ?, ?, ?)}");
             stmt.setInt(1, IDCompetitor);
             stmt.setInt(2, IDCompetition);
             stmt.setInt(3, TimeRecorded);
@@ -274,5 +279,45 @@ public class GetSetData {
             Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
         }
     
+    }
+    
+    public ResultSet getPeople(ResultSet rs, String FirstName, String SecondName, String FirstLastName, String SecondLastName, Integer ID_Team){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL getPeople(?, ?, ?, ?, ?)}");
+            if (FirstName.isEmpty()){
+                stmt.setNull(1, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(1, FirstName); 
+            }
+            if (SecondName.isEmpty()){
+                stmt.setNull(2, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(2, SecondName); 
+            }
+            if (FirstLastName.isEmpty()){
+                stmt.setNull(3, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(3, FirstLastName); 
+            }
+            if (SecondLastName.isEmpty()){
+                stmt.setNull(4, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(4, SecondLastName); 
+            }
+            if (ID_Team == null){
+                stmt.setNull(5, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(5, ID_Team);  
+            }
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
     }
 }
