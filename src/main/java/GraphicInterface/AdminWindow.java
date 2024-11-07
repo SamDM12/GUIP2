@@ -42,6 +42,7 @@ public class AdminWindow extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,6 +122,13 @@ public class AdminWindow extends javax.swing.JFrame {
             }
         });
 
+        jButton10.setText("Asignar País a Paraolímpico");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -158,13 +166,17 @@ public class AdminWindow extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton9))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(97, 97, 97)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton9)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton10)
+                                .addGap(21, 21, 21)))))
                 .addGap(67, 67, 67)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(222, 222, 222))
@@ -181,7 +193,9 @@ public class AdminWindow extends javax.swing.JFrame {
                         .addGap(70, 70, 70))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton7)
-                        .addGap(81, 81, 81)))
+                        .addGap(40, 40, 40)
+                        .addComponent(jButton10)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jButton1)
@@ -275,6 +289,12 @@ public class AdminWindow extends javax.swing.JFrame {
         window.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        AddCountryXParalympic window = new AddCountryXParalympic();
+        window.setVisible(true);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -312,6 +332,7 @@ public class AdminWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
