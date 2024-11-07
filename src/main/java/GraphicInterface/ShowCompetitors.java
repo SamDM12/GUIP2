@@ -163,6 +163,11 @@ public class ShowCompetitors extends javax.swing.JFrame {
         });
 
         jButton2.setText("Ver Olimpiadas");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         AddButton.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         AddButton.setText("FILTRAR");
@@ -281,6 +286,12 @@ public class ShowCompetitors extends javax.swing.JFrame {
         ShowCountries window = new ShowCountries();
         window.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ShowParalympics window = new ShowParalympics();
+        window.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
