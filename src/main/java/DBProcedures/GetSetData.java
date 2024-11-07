@@ -345,4 +345,30 @@ public class GetSetData {
         }
         }
     }
+    
+    
+    public void insertParalympicXCompetition(int IDParalympic,int IDCompetition){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL AddParalympicXCompetition(?, ?)}");
+            stmt.setInt(1, IDParalympic);
+            stmt.setInt(2, IDCompetition);
+            stmt.execute();
+            System.out.println("Paraolímpico y competencia vinculados");
+            JOptionPane.showMessageDialog(null, "El paraolímpico y la competencia se ha añadido exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
 }
