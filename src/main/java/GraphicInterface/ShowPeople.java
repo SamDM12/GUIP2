@@ -45,16 +45,26 @@ public class ShowPeople extends javax.swing.JFrame {
              
         try {
             int IDTeam;
+            int IDParalympic;
             String FirstName = FisrtNameTextField.getText();
             String SecondName = SecondNameTextField.getText();
             String FirstLastName = FirstLastNameTextField.getText();
             String SecondLastName = SecondLastNameTextField.getText();
             String ID_Team = IDTeamTextField.getText();
-            if (ID_Team.isEmpty()){
-                rs = Elements.getPeople(rs, FirstName, SecondName, FirstLastName, SecondLastName, null);
-            }else{
+            String ID_Paralympic = IDParalympicTextField.getText();
+            if (ID_Team.isEmpty() & ID_Paralympic.isEmpty()){
+                rs = Elements.getPeople(rs, FirstName, SecondName, FirstLastName, SecondLastName, null, null);
+            }else if(ID_Team.isEmpty()){
+                IDParalympic = Integer.parseInt(IDParalympicTextField.getText());
+                rs = Elements.getPeople(rs, FirstName, SecondName, FirstLastName, SecondLastName, null, IDParalympic);
+            }else if(ID_Paralympic.isEmpty()){
                 IDTeam = Integer.parseInt(IDTeamTextField.getText());
-                rs = Elements.getPeople(rs, FirstName, SecondName, FirstLastName, SecondLastName, IDTeam);   
+                rs = Elements.getPeople(rs, FirstName, SecondName, FirstLastName, SecondLastName, IDTeam, null);
+            }
+            else{
+                IDTeam = Integer.parseInt(IDTeamTextField.getText());
+                IDParalympic = Integer.parseInt(IDParalympicTextField.getText());
+                rs = Elements.getPeople(rs, FirstName, SecondName, FirstLastName, SecondLastName, IDTeam, IDParalympic);   
             }
             ResultSetMetaData rsmd;
             rsmd = rs.getMetaData();
@@ -108,7 +118,7 @@ public class ShowPeople extends javax.swing.JFrame {
         label7 = new java.awt.Label();
         IDTeamTextField = new java.awt.TextField();
         label8 = new java.awt.Label();
-        IDPersonTextField7 = new java.awt.TextField();
+        IDParalympicTextField = new java.awt.TextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         AddButton = new javax.swing.JButton();
@@ -172,7 +182,7 @@ public class ShowPeople extends javax.swing.JFrame {
 
         label7.setAlignment(java.awt.Label.CENTER);
         label7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        label7.setText("País que representa");
+        label7.setText("País");
 
         IDTeamTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         IDTeamTextField.setName("IDPersonTextField"); // NOI18N
@@ -181,7 +191,7 @@ public class ShowPeople extends javax.swing.JFrame {
         label8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         label8.setText("Olimpiada");
 
-        IDPersonTextField7.setName("IDPersonTextField"); // NOI18N
+        IDParalympicTextField.setName("IDPersonTextField"); // NOI18N
 
         jButton1.setText("Ver Países");
 
@@ -237,12 +247,12 @@ public class ShowPeople extends javax.swing.JFrame {
                                 .addGap(81, 81, 81)
                                 .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(IDPersonTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(IDParalympicTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2)
                                 .addGap(55, 55, 55)
                                 .addComponent(AddButton)))
-                        .addContainerGap(37, Short.MAX_VALUE))
+                        .addContainerGap(66, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2)
                         .addContainerGap())))
@@ -261,7 +271,7 @@ public class ShowPeople extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(IDPersonTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(IDParalympicTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(jButton2)
@@ -370,7 +380,7 @@ public class ShowPeople extends javax.swing.JFrame {
     private javax.swing.JButton AddButton;
     private java.awt.TextField FirstLastNameTextField;
     private java.awt.TextField FisrtNameTextField;
-    private java.awt.TextField IDPersonTextField7;
+    private java.awt.TextField IDParalympicTextField;
     private java.awt.TextField IDTeamTextField;
     private javax.swing.JTable PersonTable;
     private java.awt.TextField SecondLastNameTextField;

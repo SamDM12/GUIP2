@@ -281,11 +281,11 @@ public class GetSetData {
     
     }
     
-    public ResultSet getPeople(ResultSet rs, String FirstName, String SecondName, String FirstLastName, String SecondLastName, Integer ID_Team){
+    public ResultSet getPeople(ResultSet rs, String FirstName, String SecondName, String FirstLastName, String SecondLastName, Integer ID_Team, Integer ID_Paralympic){
         DataBaseConnection connectionC = new DataBaseConnection();
         try {
             
-            stmt = connectionC.getConn().prepareCall("{CALL getPeople(?, ?, ?, ?, ?)}");
+            stmt = connectionC.getConn().prepareCall("{CALL getPeople(?, ?, ?, ?, ?, ?)}");
             if (FirstName.isEmpty()){
                 stmt.setNull(1, java.sql.Types.VARCHAR);
             }else{
@@ -310,6 +310,12 @@ public class GetSetData {
                 stmt.setNull(5, java.sql.Types.INTEGER);
             }else{
               stmt.setInt(5, ID_Team);  
+            }
+            
+            if (ID_Paralympic == null){
+                stmt.setNull(6, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(6, ID_Paralympic);  
             }
             rs = stmt.executeQuery();
            
