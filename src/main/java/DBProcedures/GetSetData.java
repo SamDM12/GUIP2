@@ -320,4 +320,29 @@ public class GetSetData {
         } 
         return rs;
     }
+    
+    public void insertParalympic(int ParalympicYear, String HostCountry){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL AddParalympic(?, ?)}");
+            stmt.setInt(1, ParalympicYear);
+            stmt.setString(2, HostCountry);
+            stmt.execute();
+            System.out.println("Paraolímpico añadido");
+            JOptionPane.showMessageDialog(null, "El paraolímpico se ha añadido exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
 }
