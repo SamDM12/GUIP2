@@ -327,6 +327,32 @@ public class GetSetData {
         return rs;
     }
     
+    public ResultSet getCountries(ResultSet rs, String CountryName, Integer ID_Paralympic){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL getCountries(?, ?)}");
+            if (CountryName.isEmpty()){
+                stmt.setNull(1, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(1, CountryName); 
+            }
+            
+            if (ID_Paralympic == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, ID_Paralympic);  
+            }
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+    }
+    
     public void insertParalympic(int ParalympicYear, String HostCountry){
         DataBaseConnection connectionC = new DataBaseConnection();
         try {
