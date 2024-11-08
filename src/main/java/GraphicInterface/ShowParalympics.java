@@ -15,13 +15,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author samia
  */
-public class ShowCompetitions extends javax.swing.JFrame {
+public class ShowParalympics extends javax.swing.JFrame {
     GetSetData Elements = new GetSetData();
 
     /**
-     * Creates new form ShowCompetitions
+     * Creates new form ShowParalympics
      */
-    public ShowCompetitions() {
+    public ShowParalympics() {
         initComponents();
         loadDataFromDatabase();
     }
@@ -37,15 +37,24 @@ public class ShowCompetitions extends javax.swing.JFrame {
              
              
         try {
-            int IDParalympic;
-            String CompetitionName = CompetitionNameTextField.getText();
-            String ID_Paralympic = IDParalympicsTextField.getText();
-            if(ID_Paralympic.isEmpty()){
-                rs = Elements.getCompetitions(rs, CompetitionName, null);
+            int IDYear;
+            int IDCountry;
+            String ID_Country = IDCountryTextField.getText();
+            String ID_Year = IDYearTextField.getText();
+            if(ID_Year.isEmpty() & ID_Country.isEmpty()){
+                rs = Elements.getParalympics(rs, null, null);
+            }else if(ID_Year.isEmpty()){
+                IDCountry = Integer.parseInt(IDCountryTextField.getText());
+                rs = Elements.getParalympics(rs, null, IDCountry);
             }
-            else{
-                IDParalympic = Integer.parseInt(IDParalympicsTextField.getText());
-                rs = Elements.getCompetitions(rs, CompetitionName, IDParalympic);  
+            else if(ID_Country.isEmpty()){
+                IDYear = Integer.parseInt(IDYearTextField.getText());
+                rs = Elements.getParalympics(rs, IDYear, null);  
+            }
+            else {
+                IDYear = Integer.parseInt(IDYearTextField.getText());
+                IDCountry = Integer.parseInt(IDCountryTextField.getText());
+                rs = Elements.getParalympics(rs, IDYear, IDCountry); 
             }
             ResultSetMetaData rsmd;
             rsmd = rs.getMetaData();
@@ -89,10 +98,10 @@ public class ShowCompetitions extends javax.swing.JFrame {
         jButton13 = new javax.swing.JButton();
         label1 = new java.awt.Label();
         label7 = new java.awt.Label();
-        CompetitionNameTextField = new java.awt.TextField();
+        IDCountryTextField = new java.awt.TextField();
         label8 = new java.awt.Label();
-        IDParalympicsTextField = new java.awt.TextField();
-        jButton2 = new javax.swing.JButton();
+        IDYearTextField = new java.awt.TextField();
+        jButton1 = new javax.swing.JButton();
         AddButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -126,30 +135,30 @@ public class ShowCompetitions extends javax.swing.JFrame {
         label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         label1.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
         label1.setForeground(new java.awt.Color(102, 102, 102));
-        label1.setText("Competiciones");
+        label1.setText("Paralympics");
 
         label7.setAlignment(java.awt.Label.CENTER);
         label7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        label7.setText("Nombre");
+        label7.setText("País");
 
-        CompetitionNameTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        CompetitionNameTextField.setName("IDPersonTextField"); // NOI18N
+        IDCountryTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        IDCountryTextField.setName("IDPersonTextField"); // NOI18N
 
         label8.setAlignment(java.awt.Label.CENTER);
         label8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        label8.setText("Olimpiada");
+        label8.setText("Año");
 
-        IDParalympicsTextField.setName("IDPersonTextField"); // NOI18N
-        IDParalympicsTextField.addActionListener(new java.awt.event.ActionListener() {
+        IDYearTextField.setName("IDPersonTextField"); // NOI18N
+        IDYearTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDParalympicsTextFieldActionPerformed(evt);
+                IDYearTextFieldActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Ver Olimpiadas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Ver Países");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -165,33 +174,29 @@ public class ShowCompetitions extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(115, 115, 115)
-                                .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CompetitionNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(72, 72, 72)
-                                .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(IDParalympicsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
-                                .addGap(55, 55, 55)
-                                .addComponent(AddButton)
-                                .addGap(0, 86, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(378, 378, 378)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(IDCountryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addComponent(jButton1)
+                        .addGap(81, 81, 81)
+                        .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(IDYearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(177, 177, 177)
+                                .addComponent(AddButton)))
+                        .addGap(0, 158, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(300, 300, 300)
+                .addGap(293, 293, 293)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -199,30 +204,32 @@ public class ShowCompetitions extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(IDParalympicsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(CompetitionNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(2, 2, 2))))
+                                .addGap(27, 27, 27)
+                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(IDYearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(1, 1, 1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(113, 113, 113)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(IDCountryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton1))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(3, 3, 3)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(109, 109, 109)
-                        .addComponent(AddButton))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)))
+                        .addComponent(AddButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(61, 61, 61)
                 .addComponent(jButton13)
-                .addGap(31, 31, 31))
+                .addGap(45, 45, 45))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,21 +257,21 @@ public class ShowCompetitions extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton13ActionPerformed
 
-    private void IDParalympicsTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDParalympicsTextFieldActionPerformed
+    private void IDYearTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDYearTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_IDParalympicsTextFieldActionPerformed
+    }//GEN-LAST:event_IDYearTextFieldActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ShowCountries window = new ShowCountries();
+        window.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
         // TODO add your handling code here:
         //loadDataFromDatabase();
         loadDataFromDatabase();
     }//GEN-LAST:event_AddButtonActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        ShowParalympics window = new ShowParalympics();
-        window.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,31 +290,31 @@ public class ShowCompetitions extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ShowCompetitions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShowParalympics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ShowCompetitions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShowParalympics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ShowCompetitions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShowParalympics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ShowCompetitions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShowParalympics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ShowCompetitions().setVisible(true);
+                new ShowParalympics().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
-    private java.awt.TextField CompetitionNameTextField;
-    private java.awt.TextField IDParalympicsTextField;
+    private java.awt.TextField IDCountryTextField;
+    private java.awt.TextField IDYearTextField;
     private javax.swing.JTable PersonTable;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private java.awt.Label label1;

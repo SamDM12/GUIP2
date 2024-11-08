@@ -405,6 +405,32 @@ public class GetSetData {
         return rs;
     }
     
+    public ResultSet getParalympics(ResultSet rs, Integer ParalympicsYear, Integer ID_Country){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL getParalympics(?, ?)}");
+            if (ParalympicsYear == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, ParalympicsYear); 
+            }
+            
+            if (ID_Country == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, ID_Country);  
+            }
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+    }
+    
     public void insertParalympic(int ParalympicYear, String HostCountry){
         DataBaseConnection connectionC = new DataBaseConnection();
         try {
