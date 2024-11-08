@@ -480,4 +480,16 @@ public class GetSetData {
         }
         }
     }
+    public ArrayList<Person> getPersonData(){
+        ArrayList<Person> personList = new ArrayList<>();
+        try(ResultSet result = connection.getConn().prepareCall("{CALL getIdentificationNumber()}").executeQuery()){
+            while(result.next()){
+                Person person = new Person(result.getInt("IDENTIFICATIONNUMBER"), result.getString("FIRSTNAME"), result.getString("FIRSTLASTNAME"));
+                personList.add(person);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return personList;
+    }
 }

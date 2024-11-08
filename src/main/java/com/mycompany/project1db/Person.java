@@ -10,11 +10,13 @@ package com.mycompany.project1db;
  */
 public class Person {
     private int id;
-    private String name;
+    private String firstName;
+    private String firstLastName;
     
-    public Person(int id, String name) {
+    public Person(int id, String firstName, String firstLastName) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.firstLastName = firstLastName;
     }
 
     public int getId() {
@@ -26,12 +28,17 @@ public class Person {
     }
 
     public String getName() {
-        return name;
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getFirstName() {
+        return firstName;
     }
+
+    public String getFirstLastName() {
+        return firstLastName;
+    }
+
 
     
     
