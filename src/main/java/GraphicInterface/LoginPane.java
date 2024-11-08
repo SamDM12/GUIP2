@@ -84,9 +84,10 @@ public class LoginPane extends javax.swing.JFrame {
         char[] pass = passwordTextField.getPassword();
         String password = new String(pass);
         GetSetData getLogIn = new GetSetData();
-        if(getLogIn.login(user, password) || "admin".equals(user)){
+        if(getLogIn.login(user, password)){
             AdminWindow adminWin = new AdminWindow();
             adminWin.setVisible(true);
+            this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Ocurrió un error, revise los datos.", "Advertencia",JOptionPane.WARNING_MESSAGE);
         }
