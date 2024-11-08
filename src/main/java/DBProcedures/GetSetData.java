@@ -268,6 +268,31 @@ public class GetSetData {
         }
     }
     
+    public void insertDisabilityXCompetidor(int IDDisability,int IDCompetitor){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL InsertCompetitorXDisability(?, ?)}");
+            stmt.setInt(1, IDDisability);
+            stmt.setInt(2, IDCompetitor);
+            stmt.execute();
+            System.out.println("Discapacidad y competidor vinculados");
+            JOptionPane.showMessageDialog(null, "La discapacidad y el competidor se ha añadido exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
     public void insertCountry(String countryName){
         try{
             stmt = connection.getConn().prepareCall("{CALL addCountry(?)}");
@@ -475,6 +500,22 @@ public class GetSetData {
             }else{
               stmt.setInt(2, ID_Country);  
             }
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+    }
+    
+    
+    public ResultSet getDisabilities(ResultSet rs){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL getDiscapacities()}");
             rs = stmt.executeQuery();
            
         } catch (SQLException ex) {
