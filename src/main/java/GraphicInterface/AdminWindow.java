@@ -208,6 +208,11 @@ public class AdminWindow extends javax.swing.JFrame {
         jButton16.setForeground(new java.awt.Color(0, 51, 51));
         jButton16.setText("Asociar Telefono a persona");
         jButton16.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jButton17.setBackground(new java.awt.Color(204, 255, 255));
         jButton17.setForeground(new java.awt.Color(0, 51, 51));
@@ -408,6 +413,13 @@ public class AdminWindow extends javax.swing.JFrame {
         AddCompetitorXDisability window = new AddCompetitorXDisability();
         window.setVisible(true);
     }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        AddPhone window = new AddPhone();
+        window.setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16ActionPerformed
 
     /**
      * @param args the command line arguments

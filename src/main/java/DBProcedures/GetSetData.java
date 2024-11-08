@@ -654,4 +654,18 @@ public class GetSetData {
         }
     return init;
     }
+    public ArrayList<String> getPhoneType(){
+    ArrayList<String> phoneType = new ArrayList<>();
+    try{
+        stmt = connection.getConn().prepareCall("{CALL getPhoneType()}");
+        ResultSet result = stmt.executeQuery();
+        while (result.next()){
+            String phone = result.getString("PHONETYPE");
+            phoneType.add(phone);
+        }
+    }catch(SQLException ex){
+        Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return phoneType;
+    }
 }
