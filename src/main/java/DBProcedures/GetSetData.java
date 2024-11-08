@@ -159,6 +159,34 @@ public class GetSetData {
     }
     
     
+    public void insertMedalXCompetitorXCompetitionXParalympic(int IDMedal, int IDCompetitor, int IDCompetition, int IDParalympic){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL InsertMedalTypeXCompetitorXCompetitionXParalympic(?, ?, ?, ?)}");
+            stmt.setInt(1, IDMedal);
+            stmt.setInt(2, IDCompetitor);
+            stmt.setInt(3, IDCompetition);
+            stmt.setInt(4, IDParalympic);
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Proceso terminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (connection.getConn() != null && !connection.getConn().isClosed()) {
+                    connection.getConn().close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                              "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    
+    
     public void insertCompetition(String CompetitionName, LocalDate CompetitionDate, String CompetitionDescription){
         DataBaseConnection connectionC = new DataBaseConnection();
         try {

@@ -29,7 +29,7 @@ public class EraseWindow extends javax.swing.JFrame {
      */
     public EraseWindow() {
         initComponents();
-        initComboBoxCompetitor();
+       // initComboBoxCompetitor();
     }
 
     /**
@@ -39,12 +39,12 @@ public class EraseWindow extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")    
     
-        private void initComboboxIdentificationTypes(){
-        ArrayList<Competitor> IDs = this.getElements.getCompetitors();
-        for(IdentificationType ID : IDs){
-            IDTypeComboBox.addItem(ID.getName());
-        }
-    }
+        //private void initComboboxIdentificationTypes(){
+        //ArrayList<Competitor> IDs = this.getElements.getCompetitors();
+        //for(IdentificationType ID : IDs){
+         //   IDTypeComboBox.addItem(ID.getName());
+        //}
+    //}
     
     
     
