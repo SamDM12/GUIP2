@@ -181,7 +181,16 @@ public class AddAdminWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
-        // TODO add your handling code here:
+        String selected = (String) personIdCombobox.getSelectedItem();
+        if(selected != null){
+            String[] parts = selected.split(" - ");
+            if (parts.length == 3){
+                String firstName = parts[1];
+                String firstLastName = parts[2];
+                nameTextField.setText(firstName);
+                lastNameTextField.setText(firstLastName);
+            }
+        }
     }//GEN-LAST:event_confirmButtonActionPerformed
 private void setIdentificationNumberName(){
     ArrayList<Person> personList = getSetElements.getPersonData();
