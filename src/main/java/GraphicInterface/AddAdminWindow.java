@@ -8,7 +8,9 @@ import DBProcedures.GetSetData;
 import com.mycompany.project1db.Person;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,9 +42,9 @@ public class AddAdminWindow extends javax.swing.JFrame {
         lastNameTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        userNameTextField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
+        passwordField2 = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -72,6 +74,11 @@ public class AddAdminWindow extends javax.swing.JFrame {
         jLabel6.setText("Contraseña");
 
         addAdminButton.setText("Agregar administrador");
+        addAdminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAdminButtonActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Añadir administradores del sistema");
 
@@ -109,9 +116,9 @@ public class AddAdminWindow extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPasswordField1)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jPasswordField2, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                    .addComponent(passwordField)
+                                    .addComponent(userNameTextField)
+                                    .addComponent(passwordField2, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                                     .addComponent(personIdCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -151,18 +158,18 @@ public class AddAdminWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
                         .addGap(1, 1, 1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(addAdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(119, 119, 119))
         );
 
@@ -192,6 +199,31 @@ public class AddAdminWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_confirmButtonActionPerformed
+
+    private void addAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminButtonActionPerformed
+        String user = userNameTextField.getText();
+        if(!user.isEmpty()){
+            if(getSetElements.existUserName(user)){
+                showCautionMessage();
+            }
+            else{
+                char[] password1 = passwordField.getPassword();
+                char[] password2 = passwordField2.getPassword();
+                if(password1.length >= 8){
+                    if(Arrays.equals(password1, password2)){
+                        System.out.println("ok!!");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Error en datos, contraseñas diferentes", "Advertencia",JOptionPane.WARNING_MESSAGE);
+                    }
+                
+                }else{
+                    JOptionPane.showMessageDialog(null, "Error en datos, contraseña con menos de 8 caracteres.", "Advertencia",JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario vacío, agregue un usuario.", "Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_addAdminButtonActionPerformed
 private void setIdentificationNumberName(){
     ArrayList<Person> personList = getSetElements.getPersonData();
     String data;
@@ -200,6 +232,9 @@ private void setIdentificationNumberName(){
         personIdCombobox.addItem(data);
         data = "";
     }
+}
+private void showCautionMessage(){
+    JOptionPane.showMessageDialog(null, "Usuario existente, utilice otro.", "Advertencia",JOptionPane.WARNING_MESSAGE);
 }
     /**
      * @param args the command line arguments
@@ -254,11 +289,11 @@ private void setIdentificationNumberName(){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField lastNameTextField;
     private javax.swing.JTextField nameTextField;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JPasswordField passwordField2;
     private javax.swing.JComboBox<String> personIdCombobox;
+    private javax.swing.JTextField userNameTextField;
     // End of variables declaration//GEN-END:variables
 }

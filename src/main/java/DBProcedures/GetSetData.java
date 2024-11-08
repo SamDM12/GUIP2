@@ -494,12 +494,12 @@ public class GetSetData {
     }
     public boolean existUserName(String userName){
         boolean exist = true;
-        try (ResultSet result = connection.getConn().prepareCall("{CALL findUser(?)}").executeQuery()){
-            if (result.next()){
-                exist = true;
-            }else{
-                exist = false;
-            }
+        ResultSet result;
+        try {
+            stmt = connection.getConn().prepareCall("{CALL findUser(?)}");
+            stmt.setString(1, userName);
+            result = stmt.executeQuery();
+            exist = result.next();
     }   catch (SQLException ex) {
             Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
         }
