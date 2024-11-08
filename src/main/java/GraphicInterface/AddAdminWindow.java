@@ -211,7 +211,16 @@ public class AddAdminWindow extends javax.swing.JFrame {
                 char[] password2 = passwordField2.getPassword();
                 if(password1.length >= 8){
                     if(Arrays.equals(password1, password2)){
-                        System.out.println("ok!!");
+                        String password = DBProcedures.PasswordUtils.hashPassword(password1);
+                        String selected = (String) personIdCombobox.getSelectedItem();
+                        if(selected != null){
+                            String[] parts = selected.split(" - ");
+                            if (parts.length == 3){
+                                int identificationNumber = Integer.parseInt(parts[0]);
+                                getSetElements.addAdmin(identificationNumber, user, password);
+                                JOptionPane.showMessageDialog(null, "Administrador agregado a la BD","Éxito", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        }
                     }else{
                         JOptionPane.showMessageDialog(null, "Error en datos, contraseñas diferentes", "Advertencia",JOptionPane.WARNING_MESSAGE);
                     }

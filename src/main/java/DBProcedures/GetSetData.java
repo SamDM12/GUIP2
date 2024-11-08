@@ -505,4 +505,32 @@ public class GetSetData {
         }
         return exist;
     }
+    public void addAdmin(int identificationNumber, String userName, String password){
+        try{
+            stmt = connection.getConn().prepareCall("{CALL addAdmin(?,?,?)}");
+            stmt.setInt(1, identificationNumber);
+            stmt.setString(2, userName);
+            stmt.setString(3, password);
+            stmt.execute();
+        }catch(SQLException ex){
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
+    public boolean login(String userName, String password){
+        boolean init = false;
+        try{
+            stmt = connection.getConn().prepareCall("{CALL getUserPass(?)}");
+            stmt.setString(1, userName);
+            ResultSet result = stmt.executeQuery();
+            if(result.next()){
+                if(PasswordUtils.checkPassword(password, result.getString("PASSWORD_ADMIN"))){
+                    init = true;
+                }
+            }
+        }catch(SQLException ex){
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return init;
+    }
 }

@@ -147,10 +147,8 @@ public class principalWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AdministratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministratorButtonActionPerformed
-        AdminWindow window = new AdminWindow();
-        window.setVisible(true);
-
-        // TODO add your handling code here:
+        LoginPane loginPane = new LoginPane();
+        loginPane.setVisible(true);
     }//GEN-LAST:event_AdministratorButtonActionPerformed
 
     private void StatisticsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatisticsButtonActionPerformed
