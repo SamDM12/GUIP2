@@ -194,8 +194,18 @@ public class ShowPeople extends javax.swing.JFrame {
         IDParalympicTextField.setName("IDPersonTextField"); // NOI18N
 
         jButton1.setText("Ver Países");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Ver Olimpiadas");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         AddButton.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         AddButton.setText("FILTRAR");
@@ -340,6 +350,18 @@ public class ShowPeople extends javax.swing.JFrame {
         // TODO add your handling code here:
        loadDataFromDatabase();
     }//GEN-LAST:event_AddButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ShowCountries window = new ShowCountries();
+        window.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ShowParalympics window = new ShowParalympics();
+        window.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

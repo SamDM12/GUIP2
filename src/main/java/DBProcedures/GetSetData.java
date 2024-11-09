@@ -1033,11 +1033,16 @@ public class GetSetData {
         }
     }
     
-    public ResultSet getAdmins(ResultSet rs){
+    public ResultSet getAdmins(ResultSet rs, String adminName){
         DataBaseConnection connectionC = new DataBaseConnection();
         try {
             
-            stmt = connectionC.getConn().prepareCall("{CALL getAdmins()}");
+            stmt = connectionC.getConn().prepareCall("{CALL getAdmins(?)}");
+            if (adminName.isEmpty()){
+                stmt.setNull(1, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(1, adminName); 
+            }
             rs = stmt.executeQuery();
            
         } catch (SQLException ex) {
@@ -1048,11 +1053,22 @@ public class GetSetData {
         return rs;
     }
     
-    public ResultSet getCoaches(ResultSet rs){
+    public ResultSet getCoaches(ResultSet rs, Integer IDCountry, Integer ID_Paralympic){
         DataBaseConnection connectionC = new DataBaseConnection();
         try {
             
-            stmt = connectionC.getConn().prepareCall("{CALL getCoaches()}");
+            stmt = connectionC.getConn().prepareCall("{CALL getCoaches(?, ?)}");
+            if (IDCountry == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDCountry); 
+            }
+            
+            if (ID_Paralympic == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, ID_Paralympic);  
+            }
             rs = stmt.executeQuery();
            
         } catch (SQLException ex) {
