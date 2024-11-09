@@ -7,6 +7,7 @@ package GraphicInterface;
 import DBProcedures.GetSetData;
 import com.mycompany.project1db.Person;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,7 +37,7 @@ public class AddPhone extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         phoneTypeCombobox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        phoneTF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         personIdCombobox = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
@@ -59,6 +60,11 @@ public class AddPhone extends javax.swing.JFrame {
         jLabel2.setText("Numero de telefono");
 
         jButton2.setText("Agregar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Persona a la que pertenece");
 
@@ -77,7 +83,7 @@ public class AddPhone extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(phoneTypeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(phoneTF, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
                                 .addComponent(jLabel1)
@@ -92,14 +98,14 @@ public class AddPhone extends javax.swing.JFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(54, 54, 54)))))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(196, 196, 196)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(216, 216, 216))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(191, 191, 191)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,11 +120,11 @@ public class AddPhone extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phoneTypeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phoneTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(personIdCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(28, 28, 28)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -140,6 +146,28 @@ public class AddPhone extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int phoneNumber;
+        int identificationNumber;
+        String phoneType;
+        
+         String selected = (String) personIdCombobox.getSelectedItem();
+        if(selected != null && !phoneTypeCombobox.getSelectedItem().toString().isEmpty()){
+            String[] parts = selected.split(" - ");
+            if (parts.length == 3){
+               identificationNumber = Integer.parseInt(parts[0]);
+               phoneNumber = Integer.parseInt(phoneTF.getText());
+               phoneType = (String) phoneTypeCombobox.getSelectedItem();
+               getSetElements.addPhonexPerson(identificationNumber, phoneType, phoneNumber);
+               JOptionPane.showMessageDialog(null, "Administrador agregado a la BD","Éxito", JOptionPane.INFORMATION_MESSAGE);
+               phoneTF.setText("");
+               this.repaint();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Inserte un número de teléfono.", "Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 private void setIdentificationNumberName(){
     ArrayList<Person> personList = getSetElements.getPersonData();
     String data;
@@ -201,8 +229,8 @@ private void setPhoneType(){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> personIdCombobox;
+    private javax.swing.JTextField phoneTF;
     private javax.swing.JComboBox<String> phoneTypeCombobox;
     // End of variables declaration//GEN-END:variables
 }

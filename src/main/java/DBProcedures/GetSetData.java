@@ -668,4 +668,16 @@ public class GetSetData {
     }
     return phoneType;
     }
+    public void addPhonexPerson(int identificationNumber, String phoneType, int phoneNumber){
+        try{
+            stmt = connection.getConn().prepareCall("{CALL addPhonexPerson(?,?,?)}");
+            stmt.setInt(1, identificationNumber);
+            stmt.setString(2, phoneType);
+            stmt.setInt(3, phoneNumber);
+            stmt.execute();
+        }catch(SQLException ex){
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
 }
