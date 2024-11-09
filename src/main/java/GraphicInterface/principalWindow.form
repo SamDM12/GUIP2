@@ -52,18 +52,17 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" pref="571" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="430" max="-2" attributes="0"/>
-                                  <Component id="PersonsButton" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="PersonsButton1" min="-2" pref="127" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="PersonsButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                                   <Component id="RankingButton" min="-2" pref="130" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                                   <Component id="StatisticsButton" min="-2" pref="124" max="-2" attributes="0"/>
@@ -73,7 +72,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="537" max="32767" attributes="0"/>
+                  <EmptySpace pref="477" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -91,12 +90,13 @@
                   <Component id="AdministratorButton" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="PersonsButton" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
                       <Component id="RankingButton" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
                       <Component id="StatisticsButton" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="PersonsButton" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
+                      <Component id="PersonsButton1" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="272" max="32767" attributes="0"/>
+                  <EmptySpace pref="272" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -127,7 +127,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="PersonsButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ver personas"/>
+            <Property name="text" type="java.lang.String" value="Ver Records Mundiales"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PersonsButtonActionPerformed"/>
@@ -155,6 +155,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="PersonsButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ver personas"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PersonsButton1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

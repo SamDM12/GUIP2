@@ -38,6 +38,7 @@ public class principalWindow extends javax.swing.JFrame {
         RankingButton = new javax.swing.JButton();
         StatisticsButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        PersonsButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,7 +56,7 @@ public class principalWindow extends javax.swing.JFrame {
             }
         });
 
-        PersonsButton.setText("Ver personas");
+        PersonsButton.setText("Ver Records Mundiales");
         PersonsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PersonsButtonActionPerformed(evt);
@@ -83,6 +84,13 @@ public class principalWindow extends javax.swing.JFrame {
             }
         });
 
+        PersonsButton1.setText("Ver personas");
+        PersonsButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PersonsButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -95,21 +103,21 @@ public class principalWindow extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(430, 430, 430)
-                                .addComponent(PersonsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(PersonsButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(123, 123, 123)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(171, 171, 171)
+                                .addComponent(PersonsButton)
+                                .addGap(80, 80, 80)
                                 .addComponent(RankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(147, 147, 147)
                                 .addComponent(StatisticsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(101, 101, 101)
                                 .addComponent(jButton1)))))
-                .addContainerGap(537, Short.MAX_VALUE))
+                .addContainerGap(477, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,11 +131,12 @@ public class principalWindow extends javax.swing.JFrame {
                 .addComponent(AdministratorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(115, 115, 115)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PersonsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(StatisticsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 272, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PersonsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PersonsButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,7 +167,7 @@ public class principalWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_RankingButtonActionPerformed
 
     private void PersonsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonsButtonActionPerformed
-        PersonsWindow window = new PersonsWindow();
+        ShowWorldRecords window = new ShowWorldRecords();
         window.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_PersonsButtonActionPerformed
@@ -166,6 +175,10 @@ public class principalWindow extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void PersonsButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonsButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PersonsButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,6 +219,7 @@ public class principalWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdministratorButton;
     private javax.swing.JButton PersonsButton;
+    private javax.swing.JButton PersonsButton1;
     private javax.swing.JButton RankingButton;
     private javax.swing.JButton StatisticsButton;
     private javax.swing.JButton jButton1;
