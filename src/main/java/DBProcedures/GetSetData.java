@@ -690,4 +690,26 @@ public class GetSetData {
             Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public ArrayList<Person> getAdministrator(){
+        boolean add = true;
+        ArrayList<Person> admins = new ArrayList<>();
+        try{
+            stmt = connection.getConn().prepareCall("{CALL getAdministrators()}");
+            ResultSet result = stmt.executeQuery();
+            while (result.next()){
+                Person person = new Person(result.getInt("p.IDENTIFICATIONNUMBER"), result.getString("p.FIRSTNAME"), result.getString("p.FIRSTLASTNAME"));
+                person.setIdDB(result.getInt("p.ID_PERSON"));
+                for (Person p : admins){
+                   if(p.getId() == person.getId()){
+                       add = false;
+                   }
+                }
+                if (add) admins.add(person);
+                add = true;
+            }
+        }catch(SQLException ex){
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return admins;
+    }
 }

@@ -4,22 +4,38 @@
  */
 package GraphicInterface;
 
+import DBProcedures.GetSetData;
+import com.mycompany.project1db.Person;
 import javax.swing.JFrame;
-
+import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 /**
  *
  * @author chedr
  */
 public class ShowAdminWindow extends javax.swing.JFrame {
-
+    private GetSetData getSetElements = new GetSetData();
+    private DefaultTableModel mt = new DefaultTableModel();
     /**
      * Creates new form ShowAdminWindow
      */
     public ShowAdminWindow() {
         initComponents();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }
+        String ids[] = {"ID", "Identificación", "Nombre", "Apellido"};
+        mt.setColumnIdentifiers(ids);
+        adminsTable.setModel(mt);
+        addAdmins();
 
+    }
+    
+    public void addAdmins(){
+        ArrayList<Person> admins = getSetElements.getAdministrator();
+        for(Person admin : admins){
+            mt.addRow(new Object[]{admin.getIdDB(),admin.getId(), admin.getFirstName(), admin.getFirstLastName()});
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,47 +47,47 @@ public class ShowAdminWindow extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        AdminsTable = new javax.swing.JTable();
+        adminsTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
-        AdminsTable = new javax.swing.JTable(){
+        adminsTable = new javax.swing.JTable(){
             public boolean isCellditable(int row, int col){
                 return false;
             }
         };
-        AdminsTable.setModel(new javax.swing.table.DefaultTableModel(
+        adminsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "Correo"
+                "ID", "Identificación", "Nombre", "Apellido"
             }
         ));
-        AdminsTable.setRowSelectionAllowed(false);
-        AdminsTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(AdminsTable);
+        adminsTable.setRowSelectionAllowed(false);
+        adminsTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(adminsTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addContainerGap(173, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,7 +140,7 @@ public class ShowAdminWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable AdminsTable;
+    private javax.swing.JTable adminsTable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

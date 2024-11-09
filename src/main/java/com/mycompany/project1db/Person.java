@@ -9,6 +9,7 @@ package com.mycompany.project1db;
  * @author samia
  */
 public class Person {
+    private int idDB;
     private int id;
     private String firstName;
     private String firstLastName;
@@ -17,6 +18,14 @@ public class Person {
         this.id = id;
         this.firstName = firstName;
         this.firstLastName = firstLastName;
+    }
+
+    public int getIdDB() {
+        return idDB;
+    }
+
+    public void setIdDB(int idDB) {
+        this.idDB = idDB;
     }
 
     public int getId() {
