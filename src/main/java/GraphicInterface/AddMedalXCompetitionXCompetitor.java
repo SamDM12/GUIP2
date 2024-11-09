@@ -88,6 +88,11 @@ public class AddMedalXCompetitionXCompetitor extends javax.swing.JFrame {
         label5.setText("ID Paraolímpico");
 
         jButton2.setText("Ver Tabla");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Ver Tabla");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -258,6 +263,12 @@ public class AddMedalXCompetitionXCompetitor extends javax.swing.JFrame {
         ShowParalympics window = new ShowParalympics();
         window.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ShowMedals window = new ShowMedals();
+        window.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

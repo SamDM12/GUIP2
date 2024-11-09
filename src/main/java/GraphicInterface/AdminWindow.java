@@ -190,7 +190,7 @@ public class AdminWindow extends javax.swing.JFrame {
 
         jButton14.setBackground(new java.awt.Color(204, 255, 255));
         jButton14.setForeground(new java.awt.Color(0, 51, 51));
-        jButton14.setText("Asignar Paraolímpico a Competición");
+        jButton14.setText("Asignar Medalla a Competidor");
         jButton14.setActionCommand("Asignar Medalla a Competidor en Competición");
         jButton14.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton14.addActionListener(new java.awt.event.ActionListener() {

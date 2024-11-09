@@ -117,8 +117,9 @@ public class GetSetData {
     }
     
     public ArrayList<Team> getTeams(){
+        DataBaseConnection connectionC = new DataBaseConnection();
         ArrayList<Team> List = new ArrayList<>();
-        try (ResultSet result = connection.getConn().prepareCall("{CALL getTeams()}").executeQuery()) {
+        try (ResultSet result = connectionC.getConn().prepareCall("{CALL getTeams()}").executeQuery()) {
             while(result.next()){
                 Team team = new Team(result.getString("TEAMNAME"), result.getInt("QUANTITYMEMBERS"));
                 List.add(team);
