@@ -690,11 +690,18 @@ public class GetSetData {
             Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public ArrayList<Person> getAdministrator(){
+    public ArrayList<Person> getAdministrator(int identificationNumber, String name, String lastName){
         boolean add = true;
         ArrayList<Person> admins = new ArrayList<>();
         try{
-            stmt = connection.getConn().prepareCall("{CALL getAdministrators()}");
+            stmt = connection.getConn().prepareCall("{CALL getAdministrators(?,?,?)}");
+            if(identificationNumber == 0){
+                stmt.setObject(1, null);
+            }else{
+                stmt.setInt(1, identificationNumber);
+            }
+            stmt.setString(2, name);
+            stmt.setString(3, lastName);
             ResultSet result = stmt.executeQuery();
             while (result.next()){
                 Person person = new Person(result.getInt("p.IDENTIFICATIONNUMBER"), result.getString("p.FIRSTNAME"), result.getString("p.FIRSTLASTNAME"));
