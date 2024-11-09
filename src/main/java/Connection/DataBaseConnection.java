@@ -11,7 +11,7 @@ import java.sql.*;
 public class DataBaseConnection {
     private final String URL = "jdbc:mysql://localhost:3306/ParalympicGames";
     private final String USER = "root";
-    private final String PASSWORD = "baseDatos1";
+    private final String PASSWORD = "LulU2005";
     
     private Connection conn = null;
     public DataBaseConnection(){

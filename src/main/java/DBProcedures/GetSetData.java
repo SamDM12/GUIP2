@@ -719,4 +719,316 @@ public class GetSetData {
         }
         return admins;
     }
+    
+    public void deletePerson(int IDPerson){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeletePerson(?)}");
+            stmt.setInt(1, IDPerson);
+            stmt.execute();
+            System.out.println("Persona eliminada");
+            JOptionPane.showMessageDialog(null, "La persona se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
+    public void deleteCompetition(int IDCompetition){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeleteCompetition(?)}");
+            stmt.setInt(1, IDCompetition);
+            stmt.execute();
+            System.out.println("Competición eliminada");
+            JOptionPane.showMessageDialog(null, "La Competición se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
+    public void deleteParalympic(int IDParalympic){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeleteParalympic(?)}");
+            stmt.setInt(1, IDParalympic);
+            stmt.execute();
+            System.out.println("Paraolímpico eliminada");
+            JOptionPane.showMessageDialog(null, "El paraolímpico se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
+    public void deleteDisability(int IDDisability){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeleteDisability(?)}");
+            stmt.setInt(1, IDDisability);
+            stmt.execute();
+            System.out.println("Discapacidad eliminada");
+            JOptionPane.showMessageDialog(null, "La discapacidad se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
+    public void deleteCountry(int IDCountry){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeleteCountry(?)}");
+            stmt.setInt(1, IDCountry);
+            stmt.execute();
+            System.out.println("País eliminado");
+            JOptionPane.showMessageDialog(null, "El país se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
+    public void deleteCoach(int IDCoach){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeleteCoach(?)}");
+            stmt.setInt(1, IDCoach);
+            stmt.execute();
+            System.out.println("País eliminado");
+            JOptionPane.showMessageDialog(null, "El país se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
+    public void deleteMedalType(int IDMedalType){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeleteMedalType(?)}");
+            stmt.setInt(1, IDMedalType);
+            stmt.execute();
+            System.out.println("Medalla eliminada");
+            JOptionPane.showMessageDialog(null, "La medalla se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
+    public void deleteCompetitor(int IDCompetitor){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeleteCompetitor(?)}");
+            stmt.setInt(1, IDCompetitor);
+            stmt.execute();
+            System.out.println("Competidor eliminado");
+            JOptionPane.showMessageDialog(null, "El competidor se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
+    public void deleteAdmin(int IDAdministrator){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeleteAdministrator(?)}");
+            stmt.setInt(1, IDAdministrator);
+            stmt.execute();
+            System.out.println("Admin eliminado");
+            JOptionPane.showMessageDialog(null, "El admin se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
+    public void deleteGenderType(int IDGenderType){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeleteGenderType(?)}");
+            stmt.setInt(1, IDGenderType);
+            stmt.execute();
+            System.out.println("Género eliminado");
+            JOptionPane.showMessageDialog(null, "El género se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
+    public void deletePhoneType(int IDPhoneType){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeletePhoneType(?)}");
+            stmt.setInt(1, IDPhoneType);
+            stmt.execute();
+            System.out.println("Tipo de teléfono eliminado");
+            JOptionPane.showMessageDialog(null, "El tipo de teléfono se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
+    public void deleteIdentificationType(int IDIdentificationType){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeleteIdentificationType(?)}");
+            stmt.setInt(1, IDIdentificationType);
+            stmt.execute();
+            System.out.println("Tipo de identificación eliminada");
+            JOptionPane.showMessageDialog(null, "El tipo de identificación se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
+    
+    public void deleteTeam(int IDTeam){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL DeleteTeam(?)}");
+            stmt.setInt(1, IDTeam);
+            stmt.execute();
+            System.out.println("Equipo eliminado");
+            JOptionPane.showMessageDialog(null, "El equipo se ha eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }
 }
