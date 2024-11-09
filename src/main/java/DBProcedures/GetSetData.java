@@ -1031,4 +1031,109 @@ public class GetSetData {
         }
         }
     }
+    
+    public ResultSet getAdmins(ResultSet rs){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL getAdmins()}");
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+    }
+    
+    public ResultSet getCoaches(ResultSet rs){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL getCoaches()}");
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+    }
+    
+    public ResultSet getGenders(ResultSet rs){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL getGenders()}");
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+    }
+    
+    public ResultSet getIdentificationTypes(ResultSet rs){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL getIdentificationTypes()}");
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+    }
+    
+    public ResultSet getMedals(ResultSet rs){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL getMedals()}");
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+    }
+    
+    public ResultSet getPhoneTypes(ResultSet rs){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL getPhoneTypes()}");
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+    }
+    
+    public ResultSet getTeams(ResultSet rs){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL getTeamsALL()}");
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+    }
 }
