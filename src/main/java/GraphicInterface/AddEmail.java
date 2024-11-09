@@ -13,15 +13,14 @@ import javax.swing.JOptionPane;
  *
  * @author chedr
  */
-public class AddPhone extends javax.swing.JFrame {
+public class AddEmail extends javax.swing.JFrame {
     GetSetData getSetElements = new GetSetData();
     /**
-     * Creates new form AddPhone
+     * Creates new form AddEmail
      */
-    public AddPhone() {
+    public AddEmail() {
         initComponents();
         setIdentificationNumberName();
-        setPhoneType();
     }
 
     /**
@@ -34,98 +33,78 @@ public class AddPhone extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        phoneTypeCombobox = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        phoneTF = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        emailTF = new javax.swing.JTextField();
         personIdCombobox = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
-        jButton1.setText("Regresar");
+        jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Tipo de telefono");
-
-        jLabel2.setText("Numero de telefono");
-
-        jButton2.setText("Agregar");
+        jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Persona a la que pertenece");
+        jLabel1.setText("Correo electronico");
 
-        jLabel4.setText("Agregar un número de telefono");
+        jLabel2.setText("Persona a la que pertenece");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(personIdCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(phoneTypeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(phoneTF, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(119, 119, 119)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel1)
-                                .addGap(68, 68, 68)
-                                .addComponent(jLabel2)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(personIdCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54)))))
+                                .addContainerGap()
+                                .addComponent(jButton2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(216, 216, 216))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(191, 191, 191)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(58, 58, 58))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel4)
-                .addGap(53, 53, 53)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(phoneTypeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(phoneTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(personIdCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(jButton2)
                 .addContainerGap())
         );
 
@@ -143,46 +122,34 @@ public class AddPhone extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int phoneNumber;
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int identificationNumber;
-        String phoneType;
-        
+        String email = emailTF.getText();       
         String selected = (String) personIdCombobox.getSelectedItem();
-        if(selected != null && !phoneTypeCombobox.getSelectedItem().toString().isEmpty()){
+        if(selected != null && !email.isEmpty()){
             String[] parts = selected.split(" - ");
             if (parts.length == 3){
                identificationNumber = Integer.parseInt(parts[0]);
-               phoneNumber = Integer.parseInt(phoneTF.getText());
-               phoneType = (String) phoneTypeCombobox.getSelectedItem();
-               getSetElements.addPhonexPerson(identificationNumber, phoneType, phoneNumber);
-               JOptionPane.showMessageDialog(null, "Numero agregado con éxito.","Éxito", JOptionPane.INFORMATION_MESSAGE);
-               phoneTF.setText("");
-               this.repaint();
+                System.out.println(identificationNumber);
+               getSetElements.addEmailxPerson(email, identificationNumber);
+               JOptionPane.showMessageDialog(null, "Email agregado con éxito.","Éxito", JOptionPane.INFORMATION_MESSAGE);
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Inserte un número de teléfono.", "Advertencia",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Espacios en blanco, por favor rellenelos.", "Advertencia",JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 private void setIdentificationNumberName(){
     ArrayList<Person> personList = getSetElements.getPersonData();
     String data;
     for(Person person : personList){
         data = person.getId() + " - " + person.getFirstName() + " - " + person.getFirstLastName();
         personIdCombobox.addItem(data);
-        data = "";
-    }
-}
-private void setPhoneType(){
-    ArrayList<String> phoneList = getSetElements.getPhoneType();
-    String data;
-    for(String phone : phoneList){
-        data = phone;
-        phoneTypeCombobox.addItem(data);
         data = "";
     }
 }
@@ -203,34 +170,31 @@ private void setPhoneType(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddPhone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddPhone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddPhone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddPhone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddPhone().setVisible(true);
+                new AddEmail().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField emailTF;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> personIdCombobox;
-    private javax.swing.JTextField phoneTF;
-    private javax.swing.JComboBox<String> phoneTypeCombobox;
     // End of variables declaration//GEN-END:variables
 }

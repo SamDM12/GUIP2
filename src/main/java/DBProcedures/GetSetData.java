@@ -680,4 +680,14 @@ public class GetSetData {
         }
     
     }
+    public void addEmailxPerson(String email, int identificationNumber){
+        try{
+            stmt = connection.getConn().prepareCall("{CALL addEmailxPerson(?,?)}");
+            stmt.setInt(1, identificationNumber);
+            stmt.setString(2, email);
+            stmt.execute();
+        }catch(SQLException ex){
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
