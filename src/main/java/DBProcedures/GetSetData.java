@@ -1153,4 +1153,27 @@ public class GetSetData {
         } 
         return rs;
     }
+    public ArrayList<GenderType> gendersGraphic (){
+        ArrayList <GenderType> geners = getGenderTypes();
+        try{
+            stmt = connection.getConn().prepareCall("{CALL GetCompetitorsByGender()}");
+            ResultSet result = stmt.executeQuery();
+            while(result.next()){
+                String type = result.getString("g.GENDERTYPE");
+                System.out.println(type);
+                int quantity = result.getInt("cantidad_competidores");
+                for(GenderType gen : geners){
+                    if(type.equals(gen.getType())){
+                        gen.setQuantity(quantity);
+                        break;
+                    }
+                }
+            }   
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return geners;
+    }
 }
