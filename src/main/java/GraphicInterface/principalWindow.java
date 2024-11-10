@@ -63,7 +63,7 @@ public class principalWindow extends javax.swing.JFrame {
             }
         });
 
-        RankingButton.setText("Ver Ranking");
+        RankingButton.setText("Ver Ranking Países");
         RankingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RankingButtonActionPerformed(evt);
@@ -111,9 +111,9 @@ public class principalWindow extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(PersonsButton)
-                                .addGap(80, 80, 80)
+                                .addGap(109, 109, 109)
                                 .addComponent(RankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(147, 147, 147)
+                                .addGap(118, 118, 118)
                                 .addComponent(StatisticsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(101, 101, 101)
                                 .addComponent(jButton1)))))
@@ -164,6 +164,8 @@ public class principalWindow extends javax.swing.JFrame {
 
     private void RankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RankingButtonActionPerformed
         // TODO add your handling code here:
+        ShowRankingMedals window = new ShowRankingMedals();
+        window.setVisible(true);
     }//GEN-LAST:event_RankingButtonActionPerformed
 
     private void PersonsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonsButtonActionPerformed

@@ -1198,4 +1198,20 @@ public class GetSetData {
         } 
         return rs;
     }
+    
+    public ResultSet getMedalsRanking(ResultSet rs, int ParalympicsYear){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL CountMedalsByCountry(?)}");
+            stmt.setInt(1, ParalympicsYear); 
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+    }
 }
