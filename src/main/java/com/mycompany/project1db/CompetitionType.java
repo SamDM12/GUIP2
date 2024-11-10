@@ -9,28 +9,27 @@ package com.mycompany.project1db;
  * @author samia
  */
 public class CompetitionType {
-    private int ID_CompetitionType;
-    private String Description;
-
-    public CompetitionType(int ID_CompetitionType, String Description) {
-        this.ID_CompetitionType = ID_CompetitionType;
-        this.Description = Description;
-    }
-
-    public int getID_CompetitionType() {
-        return ID_CompetitionType;
-    }
-
-    public void setID_CompetitionType(int ID_CompetitionType) {
-        this.ID_CompetitionType = ID_CompetitionType;
+    private String name;
+    private int quantity;
+    public CompetitionType(String Description, int quantity) {
+        this.name = Description;
+        this.quantity = quantity;
     }
 
     public String getDescription() {
-        return Description;
+        return name;
     }
 
-    public void setDescription(String Description) {
-        this.Description = Description;
+    public void setDescription(String name) {
+        this.name = name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     
     

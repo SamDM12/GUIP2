@@ -234,11 +234,13 @@ public class principalWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PersonsButton1ActionPerformed
 
+
     private void RankingButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RankingButton1ActionPerformed
         // TODO add your handling code here:
         ShowCompetitionAgenda window = new ShowCompetitionAgenda();
         window.setVisible(true);
     }//GEN-LAST:event_RankingButton1ActionPerformed
+
 
     /**
      * @param args the command line arguments
