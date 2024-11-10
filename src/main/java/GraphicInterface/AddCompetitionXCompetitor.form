@@ -152,9 +152,9 @@
                                           <Component id="label6" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="TimeRecordedTextField" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <Component id="ScoreTextField" min="-2" pref="105" max="-2" attributes="0"/>
+                                          <Component id="PositionRecordedTextField" min="-2" pref="105" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -163,20 +163,15 @@
                                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                       <Component id="label5" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="PositionRecordedTextField" min="-2" pref="105" max="-2" attributes="0"/>
+                                      <Component id="ScoreTextField" min="-2" pref="105" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-                                              <Component id="IDCompetitionTextField" min="-2" pref="105" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                                              <Component id="AddButton" min="-2" pref="152" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Component id="IDCompetitionTextField" min="-2" pref="105" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                      <Component id="AddButton" min="-2" pref="152" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -201,13 +196,11 @@
                           <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="label3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="IDCompetitionTextField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="PositionRecordedTextField" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="label2" min="-2" max="-2" attributes="0"/>
@@ -218,26 +211,27 @@
                                   <Component id="label4" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                      <Component id="label5" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="ScoreTextField" min="-2" max="-2" attributes="0"/>
+                                          <Component id="label5" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
                           <Component id="TimeRecordedTextField" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="35" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="AddButton" min="-2" pref="50" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="AddButton" min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="ScoreTextField" min="-2" max="-2" attributes="0"/>
+                                  <Component id="PositionRecordedTextField" min="-2" max="-2" attributes="0"/>
                                   <Component id="label6" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -289,6 +283,9 @@
               </Properties>
             </Component>
             <Component class="java.awt.TextField" name="TimeRecordedTextField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="segundos"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TimeRecordedTextFieldActionPerformed"/>
               </Events>
@@ -299,9 +296,6 @@
               </Events>
             </Component>
             <Component class="java.awt.TextField" name="ScoreTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="segundos"/>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ScoreTextFieldActionPerformed"/>
               </Events>
