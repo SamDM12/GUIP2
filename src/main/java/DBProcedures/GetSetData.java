@@ -1153,7 +1153,7 @@ public class GetSetData {
         } 
         return rs;
     }
-<<<<<<< HEAD
+
     public ArrayList<GenderType> gendersGraphic (){
         ArrayList <GenderType> geners = getGenderTypes();
         try{
@@ -1169,8 +1169,15 @@ public class GetSetData {
                         break;
                     }
                 }
-            }   
-=======
+            }
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+            return geners;
+
+        } 
     
     public void insertWorldRecord(String RecordDescription, int IDCompetition, 
             int IDCountry, int IDParalympic, int IDPerson){
@@ -1208,17 +1215,14 @@ public class GetSetData {
             
             stmt = connectionC.getConn().prepareCall("{CALL getWorldRecords()}");
             rs = stmt.executeQuery();
-           
->>>>>>> origin/master
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
                                       "Error SQL", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
-<<<<<<< HEAD
+
         }
-        return geners;
-=======
-        } 
+        
         return rs;
     }
     
@@ -1236,6 +1240,6 @@ public class GetSetData {
             Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return rs;
->>>>>>> origin/master
+
     }
 }

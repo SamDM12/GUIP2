@@ -197,7 +197,7 @@ public class principalWindow extends javax.swing.JFrame {
     private static DefaultPieDataset createDataset(ArrayList<GenderType> genders) {
         DefaultPieDataset dataset = new DefaultPieDataset();
 
-<<<<<<< HEAD
+
         // Iterar sobre la lista de géneros y agregar los datos al dataset
         for (GenderType gender : genders) {
             dataset.setValue(gender.getType()+ ": " + gender.getQuantity(), gender.getQuantity());
@@ -214,12 +214,12 @@ public class principalWindow extends javax.swing.JFrame {
                 false                                  // No incluir URL en los segmentos
         );
     }
-=======
+
     private void PersonsButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonsButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PersonsButton1ActionPerformed
 
->>>>>>> origin/master
+
     /**
      * @param args the command line arguments
      */
