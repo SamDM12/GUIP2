@@ -1153,6 +1153,7 @@ public class GetSetData {
         } 
         return rs;
     }
+<<<<<<< HEAD
     public ArrayList<GenderType> gendersGraphic (){
         ArrayList <GenderType> geners = getGenderTypes();
         try{
@@ -1169,11 +1170,72 @@ public class GetSetData {
                     }
                 }
             }   
+=======
+    
+    public void insertWorldRecord(String RecordDescription, int IDCompetition, 
+            int IDCountry, int IDParalympic, int IDPerson){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL InsertWorldRecord(?, ?, ?, ?, ?)}");
+            stmt.setString(1, RecordDescription);
+            stmt.setInt(2, IDCompetition);
+            stmt.setInt(3, IDCountry);
+            stmt.setInt(4, IDParalympic);
+            stmt.setInt(5, IDPerson);
+            stmt.execute();
+            System.out.println("Record añadido");
+            JOptionPane.showMessageDialog(null, "El record mundial se ha añadido exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    public ResultSet getWorldRecords(ResultSet rs){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL getWorldRecords()}");
+            rs = stmt.executeQuery();
+           
+>>>>>>> origin/master
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
                                       "Error SQL", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+<<<<<<< HEAD
         }
         return geners;
+=======
+        } 
+        return rs;
+    }
+    
+    public ResultSet getMedalsRanking(ResultSet rs, int ParalympicsYear){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL CountMedalsByCountry(?)}");
+            stmt.setInt(1, ParalympicsYear); 
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+>>>>>>> origin/master
     }
 }
