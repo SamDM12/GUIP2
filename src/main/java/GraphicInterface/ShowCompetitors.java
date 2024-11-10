@@ -39,28 +39,32 @@ public class ShowCompetitors extends javax.swing.JFrame {
         try {
             int IDTeam;
             int IDParalympic;
-            String ID_Team = IDTeamTextField.getText();
-            String ID_Paralympic = IDParalympicsTextField.getText();
+            String FirstName = FisrtNameTextField7.getText();
+            String SecondName = SecondNameTextField7.getText();
+            String FirstLastName = FirstLastNameTextField7.getText();
+            String SecondLastName = SecondLastNameTextField7.getText();
+            String ID_Team = IDTeamTextField7.getText();
+            String ID_Paralympic = IDParalympicTextField67.getText();
             if (ID_Team.isEmpty() & ID_Paralympic.isEmpty()){
-                rs = Elements.getCompetitors(rs, null, null);
+                rs = Elements.getCompetitors(rs, null, null, FirstName, SecondName, FirstLastName, SecondLastName);
             }else if(ID_Team.isEmpty()){
-                IDParalympic = Integer.parseInt(IDParalympicsTextField.getText());
-                rs = Elements.getCompetitors(rs, null, IDParalympic);
+                IDParalympic = Integer.parseInt(IDParalympicTextField67.getText());
+                rs = Elements.getCompetitors(rs, null, IDParalympic, FirstName, SecondName, FirstLastName, SecondLastName);
             }else if(ID_Paralympic.isEmpty()){
-                IDTeam = Integer.parseInt(IDTeamTextField.getText());
-                rs = Elements.getCompetitors(rs, IDTeam, null);
+                IDTeam = Integer.parseInt(IDTeamTextField7.getText());
+                rs = Elements.getCompetitors(rs, IDTeam, null, FirstName, SecondName, FirstLastName, SecondLastName);
             }
             else{
-                IDTeam = Integer.parseInt(IDTeamTextField.getText());
-                IDParalympic = Integer.parseInt(IDParalympicsTextField.getText());
-                rs = Elements.getCompetitors(rs, IDTeam, IDParalympic);   
+                IDTeam = Integer.parseInt(IDTeamTextField7.getText());
+                IDParalympic = Integer.parseInt(IDParalympicTextField67.getText());
+                rs = Elements.getCompetitors(rs, IDTeam, IDParalympic, FirstName, SecondName, FirstLastName, SecondLastName);   
             }
             ResultSetMetaData rsmd;
             rsmd = rs.getMetaData();
             int columnCount = rsmd.getColumnCount();
             
             // Crear el modelo de tabla con los nombres de columna
-            DefaultTableModel model = (DefaultTableModel) PersonTable.getModel();
+            DefaultTableModel model = (DefaultTableModel) PersonTable66.getModel();
             model.setRowCount(0); // Limpiar cualquier dato previo
             model.setColumnCount(0); // Limpiar columnas previas
 
@@ -91,159 +95,228 @@ public class ShowCompetitors extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        PersonTable = new javax.swing.JTable();
-        jButton13 = new javax.swing.JButton();
-        label1 = new java.awt.Label();
-        label7 = new java.awt.Label();
-        IDTeamTextField = new java.awt.TextField();
-        label8 = new java.awt.Label();
-        IDParalympicsTextField = new java.awt.TextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        AddButton = new javax.swing.JButton();
+        jPanel67 = new javax.swing.JPanel();
+        jScrollPane68 = new javax.swing.JScrollPane();
+        PersonTable66 = new javax.swing.JTable();
+        jButton140 = new javax.swing.JButton();
+        label227 = new java.awt.Label();
+        label228 = new java.awt.Label();
+        FisrtNameTextField7 = new java.awt.TextField();
+        label229 = new java.awt.Label();
+        FirstLastNameTextField7 = new java.awt.TextField();
+        label233 = new java.awt.Label();
+        SecondNameTextField7 = new java.awt.TextField();
+        label234 = new java.awt.Label();
+        SecondLastNameTextField7 = new java.awt.TextField();
+        label235 = new java.awt.Label();
+        IDTeamTextField7 = new java.awt.TextField();
+        label236 = new java.awt.Label();
+        IDParalympicTextField67 = new java.awt.TextField();
+        jButton141 = new javax.swing.JButton();
+        jButton142 = new javax.swing.JButton();
+        AddButton66 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel67.setBackground(new java.awt.Color(0, 204, 204));
 
-        PersonTable.setBackground(new java.awt.Color(204, 204, 204));
-        PersonTable.setBorder(new javax.swing.border.MatteBorder(null));
-        PersonTable.setModel(new javax.swing.table.DefaultTableModel(
+        PersonTable66.setBackground(new java.awt.Color(204, 204, 204));
+        PersonTable66.setBorder(new javax.swing.border.MatteBorder(null));
+        PersonTable66.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Puntuacion Calificacion", "ID Persona", "ID Equipo"
+                "ID", "Identificación", "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido", "Fecha Nacimiento", "ID País", "ID Tipo Género", "ID Tipo Identificación"
             }
         ));
-        jScrollPane2.setViewportView(PersonTable);
+        jScrollPane68.setViewportView(PersonTable66);
 
-        jButton13.setText("Regresar");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        jButton140.setText("Regresar");
+        jButton140.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                jButton140ActionPerformed(evt);
             }
         });
 
-        label1.setAlignment(java.awt.Label.CENTER);
-        label1.setBackground(new java.awt.Color(204, 204, 204));
-        label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        label1.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
-        label1.setForeground(new java.awt.Color(102, 102, 102));
-        label1.setText("Competidores");
+        label227.setAlignment(java.awt.Label.CENTER);
+        label227.setBackground(new java.awt.Color(204, 204, 204));
+        label227.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label227.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
+        label227.setForeground(new java.awt.Color(102, 102, 102));
+        label227.setText("Competidores");
 
-        label7.setAlignment(java.awt.Label.CENTER);
-        label7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        label7.setText("País que representa");
+        label228.setAlignment(java.awt.Label.CENTER);
+        label228.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        label228.setText("Segundo Nombre");
 
-        IDTeamTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        IDTeamTextField.setName("IDPersonTextField"); // NOI18N
+        FisrtNameTextField7.setName("IDPersonTextField"); // NOI18N
 
-        label8.setAlignment(java.awt.Label.CENTER);
-        label8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        label8.setText("Olimpiada");
+        label229.setAlignment(java.awt.Label.CENTER);
+        label229.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        label229.setText("Primer Nombre");
 
-        IDParalympicsTextField.setName("IDPersonTextField"); // NOI18N
-        IDParalympicsTextField.addActionListener(new java.awt.event.ActionListener() {
+        FirstLastNameTextField7.setName("IDPersonTextField"); // NOI18N
+
+        label233.setAlignment(java.awt.Label.CENTER);
+        label233.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        label233.setText("Primer Apellido");
+
+        SecondNameTextField7.setName("IDPersonTextField"); // NOI18N
+
+        label234.setAlignment(java.awt.Label.CENTER);
+        label234.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        label234.setText("Segundo Apellido");
+
+        SecondLastNameTextField7.setName("IDPersonTextField"); // NOI18N
+
+        label235.setAlignment(java.awt.Label.CENTER);
+        label235.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        label235.setText("País");
+
+        IDTeamTextField7.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        IDTeamTextField7.setName("IDPersonTextField"); // NOI18N
+        IDTeamTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDParalympicsTextFieldActionPerformed(evt);
+                IDTeamTextField7ActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Ver Países");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        label236.setAlignment(java.awt.Label.CENTER);
+        label236.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        label236.setText("Olimpiada");
+
+        IDParalympicTextField67.setName("IDPersonTextField"); // NOI18N
+
+        jButton141.setText("Ver Países");
+        jButton141.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton141ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Ver Olimpiadas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton142.setText("Ver Olimpiadas");
+        jButton142.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton142ActionPerformed(evt);
             }
         });
 
-        AddButton.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
-        AddButton.setText("FILTRAR");
-        AddButton.addActionListener(new java.awt.event.ActionListener() {
+        AddButton66.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        AddButton66.setText("FILTRAR");
+        AddButton66.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddButtonActionPerformed(evt);
+                AddButton66ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel67Layout = new javax.swing.GroupLayout(jPanel67);
+        jPanel67.setLayout(jPanel67Layout);
+        jPanel67Layout.setHorizontalGroup(
+            jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel67Layout.createSequentialGroup()
+                .addGap(433, 433, 433)
+                .addComponent(label227, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel67Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel67Layout.createSequentialGroup()
+                        .addComponent(jButton140, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(331, 331, 331))
+                    .addGroup(jPanel67Layout.createSequentialGroup()
+                        .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label235, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label229, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IDTeamTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addComponent(jButton1)
-                        .addGap(81, 81, 81)
-                        .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FisrtNameTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IDTeamTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IDParalympicsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(55, 55, 55)
-                        .addComponent(AddButton)
-                        .addContainerGap(27, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
+                        .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel67Layout.createSequentialGroup()
+                                .addComponent(label228, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SecondNameTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label233, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FirstLastNameTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label234, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SecondLastNameTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel67Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jButton141)
+                                .addGap(81, 81, 81)
+                                .addComponent(label236, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(IDParalympicTextField67, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton142)
+                                .addGap(55, 55, 55)
+                                .addComponent(AddButton66)))
+                        .addContainerGap(39, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel67Layout.createSequentialGroup()
+                        .addComponent(jScrollPane68)
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(391, 391, 391))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(323, 323, 323)
-                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(50, 50, 50)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(IDParalympicsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jButton2)
+        jPanel67Layout.setVerticalGroup(
+            jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel67Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(label227, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel67Layout.createSequentialGroup()
+                            .addGap(40, 40, 40)
+                            .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel67Layout.createSequentialGroup()
+                                    .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(IDParalympicTextField67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(label236, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel67Layout.createSequentialGroup()
+                                            .addComponent(jButton142)
                                             .addGap(2, 2, 2)))
                                     .addGap(1, 1, 1))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(IDTeamTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(IDTeamTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton141))))
+                        .addGroup(jPanel67Layout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(SecondNameTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label228, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel67Layout.createSequentialGroup()
+                            .addComponent(label235, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(3, 3, 3)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(AddButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(jButton13)
-                .addGap(31, 31, 31))
+                    .addGroup(jPanel67Layout.createSequentialGroup()
+                        .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(SecondLastNameTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel67Layout.createSequentialGroup()
+                                    .addGap(4, 4, 4)
+                                    .addComponent(label234, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel67Layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(label233, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(FisrtNameTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label229, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(FirstLastNameTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AddButton66)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jScrollPane68, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(jButton140)
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -252,46 +325,45 @@ public class ShowCompetitors extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel67, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel67, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+    private void jButton140ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton140ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-    }//GEN-LAST:event_jButton13ActionPerformed
+    }//GEN-LAST:event_jButton140ActionPerformed
 
-    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-        // TODO add your handling code here:
-        //loadDataFromDatabase();
-        loadDataFromDatabase();
-    }//GEN-LAST:event_AddButtonActionPerformed
-
-    private void IDParalympicsTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDParalympicsTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IDParalympicsTextFieldActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton141ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton141ActionPerformed
         // TODO add your handling code here:
         ShowCountries window = new ShowCountries();
         window.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton141ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton142ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton142ActionPerformed
         // TODO add your handling code here:
         ShowParalympics window = new ShowParalympics();
         window.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton142ActionPerformed
+
+    private void AddButton66ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton66ActionPerformed
+        // TODO add your handling code here:
+        loadDataFromDatabase();
+    }//GEN-LAST:event_AddButton66ActionPerformed
+
+    private void IDTeamTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDTeamTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDTeamTextField7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,16 +402,824 @@ public class ShowCompetitors extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
-    private java.awt.TextField IDParalympicsTextField;
+    private javax.swing.JButton AddButton1;
+    private javax.swing.JButton AddButton10;
+    private javax.swing.JButton AddButton11;
+    private javax.swing.JButton AddButton12;
+    private javax.swing.JButton AddButton13;
+    private javax.swing.JButton AddButton14;
+    private javax.swing.JButton AddButton15;
+    private javax.swing.JButton AddButton16;
+    private javax.swing.JButton AddButton17;
+    private javax.swing.JButton AddButton18;
+    private javax.swing.JButton AddButton19;
+    private javax.swing.JButton AddButton2;
+    private javax.swing.JButton AddButton20;
+    private javax.swing.JButton AddButton21;
+    private javax.swing.JButton AddButton22;
+    private javax.swing.JButton AddButton23;
+    private javax.swing.JButton AddButton24;
+    private javax.swing.JButton AddButton25;
+    private javax.swing.JButton AddButton26;
+    private javax.swing.JButton AddButton27;
+    private javax.swing.JButton AddButton28;
+    private javax.swing.JButton AddButton29;
+    private javax.swing.JButton AddButton3;
+    private javax.swing.JButton AddButton30;
+    private javax.swing.JButton AddButton31;
+    private javax.swing.JButton AddButton32;
+    private javax.swing.JButton AddButton33;
+    private javax.swing.JButton AddButton34;
+    private javax.swing.JButton AddButton35;
+    private javax.swing.JButton AddButton36;
+    private javax.swing.JButton AddButton37;
+    private javax.swing.JButton AddButton38;
+    private javax.swing.JButton AddButton39;
+    private javax.swing.JButton AddButton4;
+    private javax.swing.JButton AddButton40;
+    private javax.swing.JButton AddButton41;
+    private javax.swing.JButton AddButton42;
+    private javax.swing.JButton AddButton43;
+    private javax.swing.JButton AddButton44;
+    private javax.swing.JButton AddButton45;
+    private javax.swing.JButton AddButton46;
+    private javax.swing.JButton AddButton47;
+    private javax.swing.JButton AddButton48;
+    private javax.swing.JButton AddButton49;
+    private javax.swing.JButton AddButton5;
+    private javax.swing.JButton AddButton50;
+    private javax.swing.JButton AddButton51;
+    private javax.swing.JButton AddButton52;
+    private javax.swing.JButton AddButton53;
+    private javax.swing.JButton AddButton54;
+    private javax.swing.JButton AddButton55;
+    private javax.swing.JButton AddButton56;
+    private javax.swing.JButton AddButton57;
+    private javax.swing.JButton AddButton58;
+    private javax.swing.JButton AddButton59;
+    private javax.swing.JButton AddButton6;
+    private javax.swing.JButton AddButton60;
+    private javax.swing.JButton AddButton61;
+    private javax.swing.JButton AddButton62;
+    private javax.swing.JButton AddButton63;
+    private javax.swing.JButton AddButton64;
+    private javax.swing.JButton AddButton65;
+    private javax.swing.JButton AddButton66;
+    private javax.swing.JButton AddButton67;
+    private javax.swing.JButton AddButton7;
+    private javax.swing.JButton AddButton8;
+    private javax.swing.JButton AddButton9;
+    private java.awt.TextField CountryNameTextField;
+    private java.awt.TextField CountryNameTextField1;
+    private java.awt.TextField CountryNameTextField10;
+    private java.awt.TextField CountryNameTextField11;
+    private java.awt.TextField CountryNameTextField12;
+    private java.awt.TextField CountryNameTextField13;
+    private java.awt.TextField CountryNameTextField14;
+    private java.awt.TextField CountryNameTextField15;
+    private java.awt.TextField CountryNameTextField16;
+    private java.awt.TextField CountryNameTextField17;
+    private java.awt.TextField CountryNameTextField18;
+    private java.awt.TextField CountryNameTextField19;
+    private java.awt.TextField CountryNameTextField2;
+    private java.awt.TextField CountryNameTextField20;
+    private java.awt.TextField CountryNameTextField21;
+    private java.awt.TextField CountryNameTextField22;
+    private java.awt.TextField CountryNameTextField23;
+    private java.awt.TextField CountryNameTextField24;
+    private java.awt.TextField CountryNameTextField25;
+    private java.awt.TextField CountryNameTextField26;
+    private java.awt.TextField CountryNameTextField27;
+    private java.awt.TextField CountryNameTextField28;
+    private java.awt.TextField CountryNameTextField29;
+    private java.awt.TextField CountryNameTextField3;
+    private java.awt.TextField CountryNameTextField30;
+    private java.awt.TextField CountryNameTextField31;
+    private java.awt.TextField CountryNameTextField32;
+    private java.awt.TextField CountryNameTextField33;
+    private java.awt.TextField CountryNameTextField34;
+    private java.awt.TextField CountryNameTextField35;
+    private java.awt.TextField CountryNameTextField36;
+    private java.awt.TextField CountryNameTextField37;
+    private java.awt.TextField CountryNameTextField38;
+    private java.awt.TextField CountryNameTextField39;
+    private java.awt.TextField CountryNameTextField4;
+    private java.awt.TextField CountryNameTextField40;
+    private java.awt.TextField CountryNameTextField41;
+    private java.awt.TextField CountryNameTextField42;
+    private java.awt.TextField CountryNameTextField43;
+    private java.awt.TextField CountryNameTextField44;
+    private java.awt.TextField CountryNameTextField45;
+    private java.awt.TextField CountryNameTextField46;
+    private java.awt.TextField CountryNameTextField47;
+    private java.awt.TextField CountryNameTextField48;
+    private java.awt.TextField CountryNameTextField49;
+    private java.awt.TextField CountryNameTextField5;
+    private java.awt.TextField CountryNameTextField50;
+    private java.awt.TextField CountryNameTextField51;
+    private java.awt.TextField CountryNameTextField52;
+    private java.awt.TextField CountryNameTextField53;
+    private java.awt.TextField CountryNameTextField54;
+    private java.awt.TextField CountryNameTextField55;
+    private java.awt.TextField CountryNameTextField56;
+    private java.awt.TextField CountryNameTextField57;
+    private java.awt.TextField CountryNameTextField58;
+    private java.awt.TextField CountryNameTextField59;
+    private java.awt.TextField CountryNameTextField6;
+    private java.awt.TextField CountryNameTextField7;
+    private java.awt.TextField CountryNameTextField8;
+    private java.awt.TextField CountryNameTextField9;
+    private java.awt.TextField FirstLastNameTextField;
+    private java.awt.TextField FirstLastNameTextField1;
+    private java.awt.TextField FirstLastNameTextField2;
+    private java.awt.TextField FirstLastNameTextField3;
+    private java.awt.TextField FirstLastNameTextField4;
+    private java.awt.TextField FirstLastNameTextField5;
+    private java.awt.TextField FirstLastNameTextField6;
+    private java.awt.TextField FirstLastNameTextField7;
+    private java.awt.TextField FisrtNameTextField;
+    private java.awt.TextField FisrtNameTextField1;
+    private java.awt.TextField FisrtNameTextField2;
+    private java.awt.TextField FisrtNameTextField3;
+    private java.awt.TextField FisrtNameTextField4;
+    private java.awt.TextField FisrtNameTextField5;
+    private java.awt.TextField FisrtNameTextField6;
+    private java.awt.TextField FisrtNameTextField7;
+    private java.awt.TextField IDParalympicTextField;
+    private java.awt.TextField IDParalympicTextField1;
+    private java.awt.TextField IDParalympicTextField10;
+    private java.awt.TextField IDParalympicTextField11;
+    private java.awt.TextField IDParalympicTextField12;
+    private java.awt.TextField IDParalympicTextField13;
+    private java.awt.TextField IDParalympicTextField14;
+    private java.awt.TextField IDParalympicTextField15;
+    private java.awt.TextField IDParalympicTextField16;
+    private java.awt.TextField IDParalympicTextField17;
+    private java.awt.TextField IDParalympicTextField18;
+    private java.awt.TextField IDParalympicTextField19;
+    private java.awt.TextField IDParalympicTextField2;
+    private java.awt.TextField IDParalympicTextField20;
+    private java.awt.TextField IDParalympicTextField21;
+    private java.awt.TextField IDParalympicTextField22;
+    private java.awt.TextField IDParalympicTextField23;
+    private java.awt.TextField IDParalympicTextField24;
+    private java.awt.TextField IDParalympicTextField25;
+    private java.awt.TextField IDParalympicTextField26;
+    private java.awt.TextField IDParalympicTextField27;
+    private java.awt.TextField IDParalympicTextField28;
+    private java.awt.TextField IDParalympicTextField29;
+    private java.awt.TextField IDParalympicTextField3;
+    private java.awt.TextField IDParalympicTextField30;
+    private java.awt.TextField IDParalympicTextField31;
+    private java.awt.TextField IDParalympicTextField32;
+    private java.awt.TextField IDParalympicTextField33;
+    private java.awt.TextField IDParalympicTextField34;
+    private java.awt.TextField IDParalympicTextField35;
+    private java.awt.TextField IDParalympicTextField36;
+    private java.awt.TextField IDParalympicTextField37;
+    private java.awt.TextField IDParalympicTextField38;
+    private java.awt.TextField IDParalympicTextField39;
+    private java.awt.TextField IDParalympicTextField4;
+    private java.awt.TextField IDParalympicTextField40;
+    private java.awt.TextField IDParalympicTextField41;
+    private java.awt.TextField IDParalympicTextField42;
+    private java.awt.TextField IDParalympicTextField43;
+    private java.awt.TextField IDParalympicTextField44;
+    private java.awt.TextField IDParalympicTextField45;
+    private java.awt.TextField IDParalympicTextField46;
+    private java.awt.TextField IDParalympicTextField47;
+    private java.awt.TextField IDParalympicTextField48;
+    private java.awt.TextField IDParalympicTextField49;
+    private java.awt.TextField IDParalympicTextField5;
+    private java.awt.TextField IDParalympicTextField50;
+    private java.awt.TextField IDParalympicTextField51;
+    private java.awt.TextField IDParalympicTextField52;
+    private java.awt.TextField IDParalympicTextField53;
+    private java.awt.TextField IDParalympicTextField54;
+    private java.awt.TextField IDParalympicTextField55;
+    private java.awt.TextField IDParalympicTextField56;
+    private java.awt.TextField IDParalympicTextField57;
+    private java.awt.TextField IDParalympicTextField58;
+    private java.awt.TextField IDParalympicTextField59;
+    private java.awt.TextField IDParalympicTextField6;
+    private java.awt.TextField IDParalympicTextField60;
+    private java.awt.TextField IDParalympicTextField61;
+    private java.awt.TextField IDParalympicTextField62;
+    private java.awt.TextField IDParalympicTextField63;
+    private java.awt.TextField IDParalympicTextField64;
+    private java.awt.TextField IDParalympicTextField65;
+    private java.awt.TextField IDParalympicTextField66;
+    private java.awt.TextField IDParalympicTextField67;
+    private java.awt.TextField IDParalympicTextField7;
+    private java.awt.TextField IDParalympicTextField8;
+    private java.awt.TextField IDParalympicTextField9;
     private java.awt.TextField IDTeamTextField;
+    private java.awt.TextField IDTeamTextField1;
+    private java.awt.TextField IDTeamTextField2;
+    private java.awt.TextField IDTeamTextField3;
+    private java.awt.TextField IDTeamTextField4;
+    private java.awt.TextField IDTeamTextField5;
+    private java.awt.TextField IDTeamTextField6;
+    private java.awt.TextField IDTeamTextField7;
     private javax.swing.JTable PersonTable;
+    private javax.swing.JTable PersonTable1;
+    private javax.swing.JTable PersonTable10;
+    private javax.swing.JTable PersonTable11;
+    private javax.swing.JTable PersonTable12;
+    private javax.swing.JTable PersonTable13;
+    private javax.swing.JTable PersonTable14;
+    private javax.swing.JTable PersonTable15;
+    private javax.swing.JTable PersonTable16;
+    private javax.swing.JTable PersonTable17;
+    private javax.swing.JTable PersonTable18;
+    private javax.swing.JTable PersonTable19;
+    private javax.swing.JTable PersonTable2;
+    private javax.swing.JTable PersonTable20;
+    private javax.swing.JTable PersonTable21;
+    private javax.swing.JTable PersonTable22;
+    private javax.swing.JTable PersonTable23;
+    private javax.swing.JTable PersonTable24;
+    private javax.swing.JTable PersonTable25;
+    private javax.swing.JTable PersonTable26;
+    private javax.swing.JTable PersonTable27;
+    private javax.swing.JTable PersonTable28;
+    private javax.swing.JTable PersonTable29;
+    private javax.swing.JTable PersonTable3;
+    private javax.swing.JTable PersonTable30;
+    private javax.swing.JTable PersonTable31;
+    private javax.swing.JTable PersonTable32;
+    private javax.swing.JTable PersonTable33;
+    private javax.swing.JTable PersonTable34;
+    private javax.swing.JTable PersonTable35;
+    private javax.swing.JTable PersonTable36;
+    private javax.swing.JTable PersonTable37;
+    private javax.swing.JTable PersonTable38;
+    private javax.swing.JTable PersonTable39;
+    private javax.swing.JTable PersonTable4;
+    private javax.swing.JTable PersonTable40;
+    private javax.swing.JTable PersonTable41;
+    private javax.swing.JTable PersonTable42;
+    private javax.swing.JTable PersonTable43;
+    private javax.swing.JTable PersonTable44;
+    private javax.swing.JTable PersonTable45;
+    private javax.swing.JTable PersonTable46;
+    private javax.swing.JTable PersonTable47;
+    private javax.swing.JTable PersonTable48;
+    private javax.swing.JTable PersonTable49;
+    private javax.swing.JTable PersonTable5;
+    private javax.swing.JTable PersonTable50;
+    private javax.swing.JTable PersonTable51;
+    private javax.swing.JTable PersonTable52;
+    private javax.swing.JTable PersonTable53;
+    private javax.swing.JTable PersonTable54;
+    private javax.swing.JTable PersonTable55;
+    private javax.swing.JTable PersonTable56;
+    private javax.swing.JTable PersonTable57;
+    private javax.swing.JTable PersonTable58;
+    private javax.swing.JTable PersonTable59;
+    private javax.swing.JTable PersonTable6;
+    private javax.swing.JTable PersonTable60;
+    private javax.swing.JTable PersonTable61;
+    private javax.swing.JTable PersonTable62;
+    private javax.swing.JTable PersonTable63;
+    private javax.swing.JTable PersonTable64;
+    private javax.swing.JTable PersonTable65;
+    private javax.swing.JTable PersonTable66;
+    private javax.swing.JTable PersonTable67;
+    private javax.swing.JTable PersonTable7;
+    private javax.swing.JTable PersonTable8;
+    private javax.swing.JTable PersonTable9;
+    private java.awt.TextField SecondLastNameTextField;
+    private java.awt.TextField SecondLastNameTextField1;
+    private java.awt.TextField SecondLastNameTextField2;
+    private java.awt.TextField SecondLastNameTextField3;
+    private java.awt.TextField SecondLastNameTextField4;
+    private java.awt.TextField SecondLastNameTextField5;
+    private java.awt.TextField SecondLastNameTextField6;
+    private java.awt.TextField SecondLastNameTextField7;
+    private java.awt.TextField SecondNameTextField;
+    private java.awt.TextField SecondNameTextField1;
+    private java.awt.TextField SecondNameTextField2;
+    private java.awt.TextField SecondNameTextField3;
+    private java.awt.TextField SecondNameTextField4;
+    private java.awt.TextField SecondNameTextField5;
+    private java.awt.TextField SecondNameTextField6;
+    private java.awt.TextField SecondNameTextField7;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton100;
+    private javax.swing.JButton jButton101;
+    private javax.swing.JButton jButton102;
+    private javax.swing.JButton jButton103;
+    private javax.swing.JButton jButton104;
+    private javax.swing.JButton jButton105;
+    private javax.swing.JButton jButton106;
+    private javax.swing.JButton jButton107;
+    private javax.swing.JButton jButton108;
+    private javax.swing.JButton jButton109;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton110;
+    private javax.swing.JButton jButton111;
+    private javax.swing.JButton jButton112;
+    private javax.swing.JButton jButton113;
+    private javax.swing.JButton jButton114;
+    private javax.swing.JButton jButton115;
+    private javax.swing.JButton jButton116;
+    private javax.swing.JButton jButton117;
+    private javax.swing.JButton jButton118;
+    private javax.swing.JButton jButton119;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton120;
+    private javax.swing.JButton jButton121;
+    private javax.swing.JButton jButton122;
+    private javax.swing.JButton jButton123;
+    private javax.swing.JButton jButton124;
+    private javax.swing.JButton jButton125;
+    private javax.swing.JButton jButton126;
+    private javax.swing.JButton jButton127;
+    private javax.swing.JButton jButton128;
+    private javax.swing.JButton jButton129;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton130;
+    private javax.swing.JButton jButton131;
+    private javax.swing.JButton jButton132;
+    private javax.swing.JButton jButton133;
+    private javax.swing.JButton jButton134;
+    private javax.swing.JButton jButton135;
+    private javax.swing.JButton jButton136;
+    private javax.swing.JButton jButton137;
+    private javax.swing.JButton jButton138;
+    private javax.swing.JButton jButton139;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton140;
+    private javax.swing.JButton jButton141;
+    private javax.swing.JButton jButton142;
+    private javax.swing.JButton jButton143;
+    private javax.swing.JButton jButton144;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton30;
+    private javax.swing.JButton jButton31;
+    private javax.swing.JButton jButton32;
+    private javax.swing.JButton jButton33;
+    private javax.swing.JButton jButton34;
+    private javax.swing.JButton jButton35;
+    private javax.swing.JButton jButton36;
+    private javax.swing.JButton jButton37;
+    private javax.swing.JButton jButton38;
+    private javax.swing.JButton jButton39;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton40;
+    private javax.swing.JButton jButton41;
+    private javax.swing.JButton jButton42;
+    private javax.swing.JButton jButton43;
+    private javax.swing.JButton jButton44;
+    private javax.swing.JButton jButton45;
+    private javax.swing.JButton jButton46;
+    private javax.swing.JButton jButton47;
+    private javax.swing.JButton jButton48;
+    private javax.swing.JButton jButton49;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton50;
+    private javax.swing.JButton jButton51;
+    private javax.swing.JButton jButton52;
+    private javax.swing.JButton jButton53;
+    private javax.swing.JButton jButton54;
+    private javax.swing.JButton jButton55;
+    private javax.swing.JButton jButton56;
+    private javax.swing.JButton jButton57;
+    private javax.swing.JButton jButton58;
+    private javax.swing.JButton jButton59;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton60;
+    private javax.swing.JButton jButton61;
+    private javax.swing.JButton jButton62;
+    private javax.swing.JButton jButton63;
+    private javax.swing.JButton jButton64;
+    private javax.swing.JButton jButton65;
+    private javax.swing.JButton jButton66;
+    private javax.swing.JButton jButton67;
+    private javax.swing.JButton jButton68;
+    private javax.swing.JButton jButton69;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton70;
+    private javax.swing.JButton jButton71;
+    private javax.swing.JButton jButton72;
+    private javax.swing.JButton jButton73;
+    private javax.swing.JButton jButton74;
+    private javax.swing.JButton jButton75;
+    private javax.swing.JButton jButton76;
+    private javax.swing.JButton jButton77;
+    private javax.swing.JButton jButton78;
+    private javax.swing.JButton jButton79;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton80;
+    private javax.swing.JButton jButton81;
+    private javax.swing.JButton jButton82;
+    private javax.swing.JButton jButton83;
+    private javax.swing.JButton jButton84;
+    private javax.swing.JButton jButton85;
+    private javax.swing.JButton jButton86;
+    private javax.swing.JButton jButton87;
+    private javax.swing.JButton jButton88;
+    private javax.swing.JButton jButton89;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButton90;
+    private javax.swing.JButton jButton91;
+    private javax.swing.JButton jButton92;
+    private javax.swing.JButton jButton93;
+    private javax.swing.JButton jButton94;
+    private javax.swing.JButton jButton95;
+    private javax.swing.JButton jButton96;
+    private javax.swing.JButton jButton97;
+    private javax.swing.JButton jButton98;
+    private javax.swing.JButton jButton99;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
+    private javax.swing.JPanel jPanel34;
+    private javax.swing.JPanel jPanel35;
+    private javax.swing.JPanel jPanel36;
+    private javax.swing.JPanel jPanel37;
+    private javax.swing.JPanel jPanel38;
+    private javax.swing.JPanel jPanel39;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel40;
+    private javax.swing.JPanel jPanel41;
+    private javax.swing.JPanel jPanel42;
+    private javax.swing.JPanel jPanel43;
+    private javax.swing.JPanel jPanel44;
+    private javax.swing.JPanel jPanel45;
+    private javax.swing.JPanel jPanel46;
+    private javax.swing.JPanel jPanel47;
+    private javax.swing.JPanel jPanel48;
+    private javax.swing.JPanel jPanel49;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel50;
+    private javax.swing.JPanel jPanel51;
+    private javax.swing.JPanel jPanel52;
+    private javax.swing.JPanel jPanel53;
+    private javax.swing.JPanel jPanel54;
+    private javax.swing.JPanel jPanel55;
+    private javax.swing.JPanel jPanel56;
+    private javax.swing.JPanel jPanel57;
+    private javax.swing.JPanel jPanel58;
+    private javax.swing.JPanel jPanel59;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel60;
+    private javax.swing.JPanel jPanel61;
+    private javax.swing.JPanel jPanel62;
+    private javax.swing.JPanel jPanel63;
+    private javax.swing.JPanel jPanel64;
+    private javax.swing.JPanel jPanel65;
+    private javax.swing.JPanel jPanel66;
+    private javax.swing.JPanel jPanel67;
+    private javax.swing.JPanel jPanel68;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
+    private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane20;
+    private javax.swing.JScrollPane jScrollPane21;
+    private javax.swing.JScrollPane jScrollPane22;
+    private javax.swing.JScrollPane jScrollPane23;
+    private javax.swing.JScrollPane jScrollPane24;
+    private javax.swing.JScrollPane jScrollPane25;
+    private javax.swing.JScrollPane jScrollPane26;
+    private javax.swing.JScrollPane jScrollPane27;
+    private javax.swing.JScrollPane jScrollPane28;
+    private javax.swing.JScrollPane jScrollPane29;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane30;
+    private javax.swing.JScrollPane jScrollPane31;
+    private javax.swing.JScrollPane jScrollPane32;
+    private javax.swing.JScrollPane jScrollPane33;
+    private javax.swing.JScrollPane jScrollPane34;
+    private javax.swing.JScrollPane jScrollPane35;
+    private javax.swing.JScrollPane jScrollPane36;
+    private javax.swing.JScrollPane jScrollPane37;
+    private javax.swing.JScrollPane jScrollPane38;
+    private javax.swing.JScrollPane jScrollPane39;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane40;
+    private javax.swing.JScrollPane jScrollPane41;
+    private javax.swing.JScrollPane jScrollPane42;
+    private javax.swing.JScrollPane jScrollPane43;
+    private javax.swing.JScrollPane jScrollPane44;
+    private javax.swing.JScrollPane jScrollPane45;
+    private javax.swing.JScrollPane jScrollPane46;
+    private javax.swing.JScrollPane jScrollPane47;
+    private javax.swing.JScrollPane jScrollPane48;
+    private javax.swing.JScrollPane jScrollPane49;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane50;
+    private javax.swing.JScrollPane jScrollPane51;
+    private javax.swing.JScrollPane jScrollPane52;
+    private javax.swing.JScrollPane jScrollPane53;
+    private javax.swing.JScrollPane jScrollPane54;
+    private javax.swing.JScrollPane jScrollPane55;
+    private javax.swing.JScrollPane jScrollPane56;
+    private javax.swing.JScrollPane jScrollPane57;
+    private javax.swing.JScrollPane jScrollPane58;
+    private javax.swing.JScrollPane jScrollPane59;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane60;
+    private javax.swing.JScrollPane jScrollPane61;
+    private javax.swing.JScrollPane jScrollPane62;
+    private javax.swing.JScrollPane jScrollPane63;
+    private javax.swing.JScrollPane jScrollPane64;
+    private javax.swing.JScrollPane jScrollPane65;
+    private javax.swing.JScrollPane jScrollPane66;
+    private javax.swing.JScrollPane jScrollPane67;
+    private javax.swing.JScrollPane jScrollPane68;
+    private javax.swing.JScrollPane jScrollPane69;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private java.awt.Label label1;
+    private java.awt.Label label10;
+    private java.awt.Label label100;
+    private java.awt.Label label101;
+    private java.awt.Label label102;
+    private java.awt.Label label103;
+    private java.awt.Label label104;
+    private java.awt.Label label105;
+    private java.awt.Label label106;
+    private java.awt.Label label107;
+    private java.awt.Label label108;
+    private java.awt.Label label109;
+    private java.awt.Label label11;
+    private java.awt.Label label110;
+    private java.awt.Label label111;
+    private java.awt.Label label112;
+    private java.awt.Label label113;
+    private java.awt.Label label114;
+    private java.awt.Label label115;
+    private java.awt.Label label116;
+    private java.awt.Label label117;
+    private java.awt.Label label118;
+    private java.awt.Label label119;
+    private java.awt.Label label12;
+    private java.awt.Label label120;
+    private java.awt.Label label121;
+    private java.awt.Label label122;
+    private java.awt.Label label123;
+    private java.awt.Label label124;
+    private java.awt.Label label125;
+    private java.awt.Label label126;
+    private java.awt.Label label127;
+    private java.awt.Label label128;
+    private java.awt.Label label129;
+    private java.awt.Label label13;
+    private java.awt.Label label130;
+    private java.awt.Label label131;
+    private java.awt.Label label132;
+    private java.awt.Label label133;
+    private java.awt.Label label134;
+    private java.awt.Label label135;
+    private java.awt.Label label136;
+    private java.awt.Label label137;
+    private java.awt.Label label138;
+    private java.awt.Label label139;
+    private java.awt.Label label14;
+    private java.awt.Label label140;
+    private java.awt.Label label141;
+    private java.awt.Label label142;
+    private java.awt.Label label143;
+    private java.awt.Label label144;
+    private java.awt.Label label145;
+    private java.awt.Label label146;
+    private java.awt.Label label147;
+    private java.awt.Label label148;
+    private java.awt.Label label149;
+    private java.awt.Label label15;
+    private java.awt.Label label150;
+    private java.awt.Label label151;
+    private java.awt.Label label152;
+    private java.awt.Label label153;
+    private java.awt.Label label154;
+    private java.awt.Label label155;
+    private java.awt.Label label156;
+    private java.awt.Label label157;
+    private java.awt.Label label158;
+    private java.awt.Label label159;
+    private java.awt.Label label16;
+    private java.awt.Label label160;
+    private java.awt.Label label161;
+    private java.awt.Label label162;
+    private java.awt.Label label163;
+    private java.awt.Label label164;
+    private java.awt.Label label165;
+    private java.awt.Label label166;
+    private java.awt.Label label167;
+    private java.awt.Label label168;
+    private java.awt.Label label169;
+    private java.awt.Label label17;
+    private java.awt.Label label170;
+    private java.awt.Label label171;
+    private java.awt.Label label172;
+    private java.awt.Label label173;
+    private java.awt.Label label174;
+    private java.awt.Label label175;
+    private java.awt.Label label176;
+    private java.awt.Label label177;
+    private java.awt.Label label178;
+    private java.awt.Label label179;
+    private java.awt.Label label18;
+    private java.awt.Label label180;
+    private java.awt.Label label181;
+    private java.awt.Label label182;
+    private java.awt.Label label183;
+    private java.awt.Label label184;
+    private java.awt.Label label185;
+    private java.awt.Label label186;
+    private java.awt.Label label187;
+    private java.awt.Label label188;
+    private java.awt.Label label189;
+    private java.awt.Label label19;
+    private java.awt.Label label190;
+    private java.awt.Label label191;
+    private java.awt.Label label192;
+    private java.awt.Label label193;
+    private java.awt.Label label194;
+    private java.awt.Label label195;
+    private java.awt.Label label196;
+    private java.awt.Label label197;
+    private java.awt.Label label198;
+    private java.awt.Label label199;
+    private java.awt.Label label2;
+    private java.awt.Label label20;
+    private java.awt.Label label200;
+    private java.awt.Label label201;
+    private java.awt.Label label202;
+    private java.awt.Label label203;
+    private java.awt.Label label204;
+    private java.awt.Label label205;
+    private java.awt.Label label206;
+    private java.awt.Label label207;
+    private java.awt.Label label208;
+    private java.awt.Label label209;
+    private java.awt.Label label21;
+    private java.awt.Label label210;
+    private java.awt.Label label211;
+    private java.awt.Label label212;
+    private java.awt.Label label213;
+    private java.awt.Label label214;
+    private java.awt.Label label215;
+    private java.awt.Label label216;
+    private java.awt.Label label217;
+    private java.awt.Label label218;
+    private java.awt.Label label219;
+    private java.awt.Label label22;
+    private java.awt.Label label220;
+    private java.awt.Label label221;
+    private java.awt.Label label222;
+    private java.awt.Label label223;
+    private java.awt.Label label224;
+    private java.awt.Label label225;
+    private java.awt.Label label226;
+    private java.awt.Label label227;
+    private java.awt.Label label228;
+    private java.awt.Label label229;
+    private java.awt.Label label23;
+    private java.awt.Label label230;
+    private java.awt.Label label231;
+    private java.awt.Label label232;
+    private java.awt.Label label233;
+    private java.awt.Label label234;
+    private java.awt.Label label235;
+    private java.awt.Label label236;
+    private java.awt.Label label24;
+    private java.awt.Label label25;
+    private java.awt.Label label26;
+    private java.awt.Label label27;
+    private java.awt.Label label28;
+    private java.awt.Label label29;
+    private java.awt.Label label3;
+    private java.awt.Label label30;
+    private java.awt.Label label31;
+    private java.awt.Label label32;
+    private java.awt.Label label33;
+    private java.awt.Label label34;
+    private java.awt.Label label35;
+    private java.awt.Label label36;
+    private java.awt.Label label37;
+    private java.awt.Label label38;
+    private java.awt.Label label39;
+    private java.awt.Label label4;
+    private java.awt.Label label40;
+    private java.awt.Label label41;
+    private java.awt.Label label42;
+    private java.awt.Label label43;
+    private java.awt.Label label44;
+    private java.awt.Label label45;
+    private java.awt.Label label46;
+    private java.awt.Label label47;
+    private java.awt.Label label48;
+    private java.awt.Label label49;
+    private java.awt.Label label5;
+    private java.awt.Label label50;
+    private java.awt.Label label51;
+    private java.awt.Label label52;
+    private java.awt.Label label53;
+    private java.awt.Label label54;
+    private java.awt.Label label55;
+    private java.awt.Label label56;
+    private java.awt.Label label57;
+    private java.awt.Label label58;
+    private java.awt.Label label59;
+    private java.awt.Label label6;
+    private java.awt.Label label60;
+    private java.awt.Label label61;
+    private java.awt.Label label62;
+    private java.awt.Label label63;
+    private java.awt.Label label64;
+    private java.awt.Label label65;
+    private java.awt.Label label66;
+    private java.awt.Label label67;
+    private java.awt.Label label68;
+    private java.awt.Label label69;
     private java.awt.Label label7;
+    private java.awt.Label label70;
+    private java.awt.Label label71;
+    private java.awt.Label label72;
+    private java.awt.Label label73;
+    private java.awt.Label label74;
+    private java.awt.Label label75;
+    private java.awt.Label label76;
+    private java.awt.Label label77;
+    private java.awt.Label label78;
+    private java.awt.Label label79;
     private java.awt.Label label8;
+    private java.awt.Label label80;
+    private java.awt.Label label81;
+    private java.awt.Label label82;
+    private java.awt.Label label83;
+    private java.awt.Label label84;
+    private java.awt.Label label85;
+    private java.awt.Label label86;
+    private java.awt.Label label87;
+    private java.awt.Label label88;
+    private java.awt.Label label89;
+    private java.awt.Label label9;
+    private java.awt.Label label90;
+    private java.awt.Label label91;
+    private java.awt.Label label92;
+    private java.awt.Label label93;
+    private java.awt.Label label94;
+    private java.awt.Label label95;
+    private java.awt.Label label96;
+    private java.awt.Label label97;
+    private java.awt.Label label98;
+    private java.awt.Label label99;
     // End of variables declaration//GEN-END:variables
 }

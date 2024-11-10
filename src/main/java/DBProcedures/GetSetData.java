@@ -434,11 +434,11 @@ public class GetSetData {
         return rs;
     }
     
-    public ResultSet getCompetitors(ResultSet rs, Integer IDCountry, Integer ID_Paralympic){
+    public ResultSet getCompetitors(ResultSet rs, Integer IDCountry, Integer ID_Paralympic, String FirstName, String SecondName, String FirstLastName, String SecondLastName){
         DataBaseConnection connectionC = new DataBaseConnection();
         try {
             
-            stmt = connectionC.getConn().prepareCall("{CALL getCompetitors(?, ?)}");
+            stmt = connectionC.getConn().prepareCall("{CALL getCompetitors(?, ?, ?, ?, ?, ?)}");
             if (IDCountry == null){
                 stmt.setNull(1, java.sql.Types.INTEGER);
             }else{
@@ -449,6 +449,30 @@ public class GetSetData {
                 stmt.setNull(2, java.sql.Types.INTEGER);
             }else{
               stmt.setInt(2, ID_Paralympic);  
+            }
+           
+            if (FirstName.isEmpty()){
+                stmt.setNull(3, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(3, FirstName);  
+            }
+            
+            if (SecondName.isEmpty()){
+                stmt.setNull(4, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(4, SecondName);  
+            }
+            
+            if (FirstLastName.isEmpty()){
+                stmt.setNull(5, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(5, FirstLastName);  
+            }
+            
+            if (SecondLastName.isEmpty()){
+                stmt.setNull(6, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(6, SecondLastName);  
             }
             rs = stmt.executeQuery();
            

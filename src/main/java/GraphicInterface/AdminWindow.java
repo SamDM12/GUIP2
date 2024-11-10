@@ -107,7 +107,7 @@ public class AdminWindow extends javax.swing.JFrame {
 
         jButton12.setBackground(new java.awt.Color(204, 255, 255));
         jButton12.setForeground(new java.awt.Color(0, 51, 51));
-        jButton12.setText("ver admins");
+        jButton12.setText("Ver Todo");
         jButton12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -474,7 +474,7 @@ public class AdminWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        ShowAdminWindow window = new ShowAdminWindow();
+        SubMenuViews window = new SubMenuViews();
         window.setVisible(true);
 
 // TODO add your handling code here:
