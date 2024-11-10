@@ -1242,4 +1242,23 @@ public class GetSetData {
         return rs;
 
     }
+    public ArrayList<CompetitionType> getCompetitionGraphic(){
+        ArrayList<CompetitionType> competitions = new ArrayList<>();
+        try{
+            stmt = connection.getConn().prepareCall("{CALL GetCompetitorsCountByCompetition()}");
+            ResultSet result = stmt.executeQuery();
+            while (result.next()){
+                CompetitionType c = new CompetitionType(result.getString("COMPETITIONNAME"), result.getInt("cantidad_competidores"));
+                competitions.add(c);
+                
+            }
+        
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return competitions;
+    }
 }

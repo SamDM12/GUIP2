@@ -98,6 +98,11 @@ public class AdminWindow extends javax.swing.JFrame {
         jButton11.setForeground(new java.awt.Color(0, 51, 51));
         jButton11.setText("ver estadísticas");
         jButton11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setBackground(new java.awt.Color(204, 255, 255));
         jButton12.setForeground(new java.awt.Color(0, 51, 51));
@@ -465,6 +470,12 @@ public class AdminWindow extends javax.swing.JFrame {
         AddWorldRecord window = new AddWorldRecord();
         window.setVisible(true);
     }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        ShowST window = new ShowST();
+        window.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments
