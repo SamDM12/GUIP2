@@ -24,6 +24,12 @@
             <type>jar</type>
         </dependency>
         <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.5.5</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ojdbc8</artifactId>
             <version>21.15.0.0</version> <!-- Asegúrate de usar la versión adecuada -->

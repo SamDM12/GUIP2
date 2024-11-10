@@ -10,6 +10,7 @@ package com.mycompany.project1db;
  */
 public class GenderType {
     private String Type;
+    private int Quantity;
 
     public GenderType(String Type) {
         this.Type = Type;
@@ -21,6 +22,14 @@ public class GenderType {
 
     public void setType(String Type) {
         this.Type = Type;
+    }
+
+    public int getQuantity() {
+        return Quantity;
+    }
+
+    public void setQuantity(int Quantity) {
+        this.Quantity = Quantity;
     }
     
     
