@@ -1214,4 +1214,52 @@ public class GetSetData {
         } 
         return rs;
     }
+    
+    public void insertEvent(int IDCompetition, int IDParalympic, 
+            int IDCompetitor, LocalDate EventDate){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL InsertEvent(?, ?, ?, ?)}");
+            stmt.setInt(1, IDCompetition);
+            stmt.setInt(2, IDParalympic);
+            stmt.setInt(3, IDCompetitor);
+            Date sqlDate = Date.valueOf(EventDate);
+            stmt.setDate(4, sqlDate);
+            stmt.execute();
+            System.out.println("Evento añadido");
+            JOptionPane.showMessageDialog(null, "El evento se ha añadido exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    
+    public ResultSet getCompetitionAgenda(ResultSet rs, int IDCompetition, int ParalympicsYear){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            
+            stmt = connectionC.getConn().prepareCall("{CALL ShowEventAgenda(?, ?)}");
+            stmt.setInt(1, IDCompetition); 
+            stmt.setInt(2, ParalympicsYear);
+            rs = stmt.executeQuery();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return rs;
+    }
 }
