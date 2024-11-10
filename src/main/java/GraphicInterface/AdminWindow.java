@@ -486,19 +486,19 @@ public class AdminWindow extends javax.swing.JFrame {
         window.setVisible(true);
     }//GEN-LAST:event_jButton18ActionPerformed
 
-<<<<<<< HEAD
+
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         ShowST window = new ShowST();
         window.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
-=======
+
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
         AddEvent window = new AddEvent();
         window.setVisible(true);
     }//GEN-LAST:event_jButton19ActionPerformed
->>>>>>> origin/master
+
 
     /**
      * @param args the command line arguments
