@@ -1426,5 +1426,33 @@ public class GetSetData {
         genders.add(newGender);
         return newGender;
     }
+    public ArrayList<AgeXSport> getCompetitorsInAgeRange(int minAge, int maxAge, int paralympicsYear){
+        ArrayList<AgeXSport> ageXSports = new ArrayList<>();
+
+        try {
+            // Prepara la llamada al procedimiento almacenado
+            stmt = connection.getConn().prepareCall("{ call GetCompetitorsInAgeRange(?, ?, ?) }");
+            stmt.setInt(1, minAge);        // Rango de edad mínimo
+            stmt.setInt(2, maxAge);        // Rango de edad máximo
+            stmt.setInt(3, paralympicsYear);  // Año de la paralimpiada
+
+            // Ejecuta el procedimiento
+            ResultSet rs = stmt.executeQuery();
+
+        // Procesa los resultados y crea los objetos AgeXSport
+            while (rs.next()) {
+                String competitionName = rs.getString("competitionname");
+                int inRange = rs.getInt("inRange");
+                int outRange = rs.getInt("outRange");
+
+                AgeXSport ageXSport = new AgeXSport(competitionName, inRange, outRange);
+                ageXSports.add(ageXSport);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return ageXSports;
+    }
     
 }
