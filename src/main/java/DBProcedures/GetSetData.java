@@ -1398,4 +1398,667 @@ public class GetSetData {
         }
         return years;
     }
+    
+    public void updatePerson(Integer IDPerson, Integer IdentificationNumber, String FirstName, 
+            String SecondName, String FirstLastName, String SecondLastName, 
+            LocalDate BirthDate, Integer CountryName, Integer GenderName, Integer IdentificationName){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdatePerson(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+            /*
+            if (CompetitionNam.isEmpty){
+                stmt.setNull(1, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(1, CompetitionName); 
+            }
+            
+            if (ID_Paralympic == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, ID_Paralympic);  
+            }
+            */
+            if (IDPerson == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDPerson);  
+            }
+            
+            if (IdentificationNumber == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, IdentificationNumber);  
+            }
+            
+            if (FirstName.isEmpty()){
+                stmt.setNull(3, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(3, FirstName); 
+            }
+            
+            if (SecondName.isEmpty()){
+                stmt.setNull(4, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(4, SecondName); 
+            }
+            
+            if (FirstLastName.isEmpty()){
+                stmt.setNull(5, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(5, FirstLastName); 
+            }
+            
+            if (SecondLastName.isEmpty()){
+                stmt.setNull(6, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(6, SecondLastName); 
+            }
+            
+            if (BirthDate == null){
+                stmt.setNull(7, java.sql.Types.DATE);
+            }else{
+                Date sqlDate = Date.valueOf(BirthDate);
+                stmt.setDate(7, sqlDate);
+            }
+            
+            if (CountryName == null){
+                stmt.setNull(8, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(8, CountryName); 
+            }
+            
+            if (GenderName == null){
+                stmt.setNull(9, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(9, GenderName); 
+            }
+            
+            if (IdentificationName == null){
+                stmt.setNull(10, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(10, IdentificationName); 
+            }
+            stmt.execute();
+            System.out.println("Persona actualizada");
+            JOptionPane.showMessageDialog(null, "La persona se ha actualizado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    public void updateEmail(Integer IDEmail, String EmailAdress, Integer IDPerson){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdateEmail(?, ?, ?)}");
+      
+            if (IDEmail == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDEmail);  
+            }
+            
+            if (EmailAdress.isEmpty()){
+                stmt.setNull(2, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(2, EmailAdress); 
+            }
+            
+            if (IDPerson == null){
+                stmt.setNull(3, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(3, IDPerson);  
+            }
+            
+            stmt.execute();
+            System.out.println("Email actualizado");
+            JOptionPane.showMessageDialog(null, "El Email se ha actualizado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    public void updatePhone(Integer IDPhone, Integer PhoneNumber, Integer IDPhoneType){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdatePhone(?, ?, ?)}");
+      
+            if (IDPhone == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDPhone);  
+            }
+            
+            if (PhoneNumber == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, PhoneNumber);  
+            }
+            
+            if (IDPhoneType == null){
+                stmt.setNull(3, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(3, IDPhoneType);  
+            }
+            
+            stmt.execute();
+            System.out.println("Teléfono actualizado");
+            JOptionPane.showMessageDialog(null, "El teléfono se ha actualizado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    public void updatePersonXPhone(Integer IDPersonXPhone, Integer IDPerson, Integer IDPhone){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdatePersonXPhone(?, ?, ?)}");
+      
+            if (IDPersonXPhone == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDPersonXPhone);  
+            }
+            
+            if (IDPerson == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, IDPerson);  
+            }
+            
+            if (IDPhone == null){
+                stmt.setNull(3, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(3, IDPhone);  
+            }
+            
+            stmt.execute();
+            System.out.println("Teléfono y persona actualizados");
+            JOptionPane.showMessageDialog(null, "El teléfono de la persona se ha actualizado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    public void updateCoach(Integer IDCoach, Integer IDPerson, Integer IDTeam){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdateCoach(?, ?, ?)}");
+      
+            if (IDCoach == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDCoach);  
+            }
+            
+            if (IDPerson == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, IDPerson);  
+            }
+            
+            if (IDTeam == null){
+                stmt.setNull(3, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(3, IDTeam);  
+            }
+            
+            stmt.execute();
+            System.out.println("Entrenador actualizado");
+            JOptionPane.showMessageDialog(null, "El entrenador se ha actualizado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    
+    public void updateCompetitor(Integer IDCompetitor, Integer ClasificationScore, Integer IDPerson, Integer IDTeam){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdateCompetitor(?, ?, ?, ?)}");
+      
+            if (IDCompetitor == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDCompetitor);  
+            }
+            
+            if (ClasificationScore == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, ClasificationScore);  
+            }
+            
+            if (IDPerson == null){
+                stmt.setNull(3, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(3, IDPerson);  
+            }
+            
+            if (IDTeam == null){
+                stmt.setNull(4, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(4, IDTeam);  
+            }
+            
+            stmt.execute();
+            System.out.println("Competidor actualizado");
+            JOptionPane.showMessageDialog(null, "El competidor se ha actualizado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    public void updateTeam(Integer IDTeam, String TeamName, Integer QuantityMembers){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdateTeam(?, ?, ?)}");
+      
+            if (IDTeam == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDTeam);  
+            }
+            
+            if (TeamName.isEmpty()){
+                stmt.setNull(2, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(2, TeamName);  
+            }
+            
+            if (QuantityMembers == null){
+                stmt.setNull(3, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(3, QuantityMembers);  
+            }
+            
+            stmt.execute();
+            System.out.println("Equipo actualizado");
+            JOptionPane.showMessageDialog(null, "El equipo se ha actualizado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    public void updateCompetitorXDisability(Integer IDCompetitorXDisability, Integer IDCompetitor, Integer IDDisability){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdateCompetitorXDisability(?, ?, ?)}");
+      
+            if (IDCompetitorXDisability == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDCompetitorXDisability);  
+            }
+            
+            if (IDCompetitor == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, IDCompetitor);  
+            }
+            
+            if (IDDisability == null){
+                stmt.setNull(3, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(3, IDDisability);  
+            }
+            
+            stmt.execute();
+            System.out.println("Competidor y Discapacidad actualizados");
+            JOptionPane.showMessageDialog(null, "La discapacidad del competidor se ha actualizado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    public void updateCompetitorXCompetition(Integer IDCompetitorXCompetition, Integer IDCompetitor, Integer IDCompetition, Integer TimeRecorded, Integer Score, Integer PositionRecorded){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdateCompetitorXCompetition(?, ?, ?, ?, ?, ?)}");
+      
+            if (IDCompetitorXCompetition == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDCompetitorXCompetition);  
+            }
+            
+            if (IDCompetitor == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, IDCompetitor);  
+            }
+            
+            if (IDCompetition == null){
+                stmt.setNull(3, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(3, IDCompetition);  
+            }
+            
+            if (TimeRecorded == null){
+                stmt.setNull(4, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(4, TimeRecorded);  
+            }
+            
+            if (Score == null){
+                stmt.setNull(5, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(5, Score);  
+            }
+            
+            if (PositionRecorded == null){
+                stmt.setNull(6, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(6, PositionRecorded);  
+            }
+            
+            stmt.execute();
+            System.out.println("Competidor por Competición actualizado");
+            JOptionPane.showMessageDialog(null, "Competidor por competición actualizada exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    public void updateMedalType(Integer IDMedalTypeXCompetitorXCompetitionXParalympic, Integer IDMedalType, Integer IDCompetitor, Integer IDCompetition, Integer IDParalympic){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdateMedalTypeXCompetitorXCompetitionXParalympic(?, ?, ?, ?, ?)}");
+      
+            if (IDMedalTypeXCompetitorXCompetitionXParalympic == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDMedalTypeXCompetitorXCompetitionXParalympic);  
+            }
+            
+            if (IDMedalType == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, IDMedalType);  
+            }
+            
+            if (IDCompetitor == null){
+                stmt.setNull(3, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(3, IDCompetitor);  
+            }
+            
+            if (IDCompetition == null){
+                stmt.setNull(4, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(4, IDCompetition);  
+            }
+            
+            if (IDParalympic == null){
+                stmt.setNull(5, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(5, IDParalympic);  
+            }
+            
+            
+            stmt.execute();
+            System.out.println("Asignación de medalla actualizada");
+            JOptionPane.showMessageDialog(null, "Asignación de medalla actualizada exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    public void updateCompetition(Integer IDCompetition, String CompetitionName, LocalDate CompetitionDate, String CompetitionDescription){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdateCompetition(?, ?, ?, ?)}");
+      
+            if (IDCompetition == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDCompetition);  
+            }
+             
+            if (CompetitionName.isEmpty()){
+                stmt.setNull(2, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(2, CompetitionName); 
+            }
+            
+            if (CompetitionDate == null){
+                stmt.setNull(3, java.sql.Types.DATE);
+            }else{
+                Date sqlDate = Date.valueOf(CompetitionDate);
+                stmt.setDate(3, sqlDate);
+            }
+            
+            if (CompetitionDescription.isEmpty()){
+                stmt.setNull(4, java.sql.Types.VARCHAR);
+            }else{
+              stmt.setString(4, CompetitionDescription); 
+            }
+            
+            stmt.execute();
+            System.out.println("Competición actualizada");
+            JOptionPane.showMessageDialog(null, "La competición se ha actualizado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    public void updateParalympicXCompetition(Integer IDParalympicXCompetition, Integer IDParalympic, Integer IDCompetition){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdateParalympicXCompetition(?, ?, ?)}");
+      
+            if (IDParalympicXCompetition == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDParalympicXCompetition);  
+            }
+            
+            if (IDParalympic == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, IDParalympic);  
+            }
+            
+            if (IDCompetition == null){
+                stmt.setNull(3, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(3, IDCompetition);  
+            }
+            
+            stmt.execute();
+            System.out.println("Paraolímpico por competición actualizado");
+            JOptionPane.showMessageDialog(null, "El paraolímpico por competición se ha actualizado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+    
+    public void updateParalympic(Integer IDParalympic, Integer ParalympicYear, Integer IDCountry){
+        DataBaseConnection connectionC = new DataBaseConnection();
+        try {
+            stmt = connectionC.getConn().prepareCall("{CALL UpdateParalympic(?, ?, ?)}");
+      
+            if (IDParalympic == null){
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(1, IDParalympic);  
+            }
+            
+            if (ParalympicYear == null){
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(2, ParalympicYear);  
+            }
+            
+            if (IDCountry == null){
+                stmt.setNull(3, java.sql.Types.INTEGER);
+            }else{
+              stmt.setInt(3, IDCountry);  
+            }
+            
+            stmt.execute();
+            System.out.println("Paraolímpico actualizado");
+            JOptionPane.showMessageDialog(null, "El paraolímpico se ha actualizado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        // Cerrar el statement y la conexión después de la ejecución
+        try {
+            if (stmt != null) stmt.close();
+            if (connection.getConn() != null) connection.getConn().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión:\n" + e.getMessage(), 
+                                          "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        
+    }
+
+    
+    
 }
