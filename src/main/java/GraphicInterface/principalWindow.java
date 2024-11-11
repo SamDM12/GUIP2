@@ -180,16 +180,7 @@ public class principalWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_AdministratorButtonActionPerformed
 
     private void StatisticsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatisticsButtonActionPerformed
-        ArrayList<GenderType> genders = getSetElements.gendersGraphic();
-        DefaultPieDataset dataset = createDataset(genders);
-        JFreeChart pieChart = createPieChart(dataset);
-        ChartPanel chartPanel = new ChartPanel(pieChart);
-        chartPanel.setPreferredSize(new java.awt.Dimension(800, 600));
-        JFrame frame = new JFrame("Distribución de Géneros de Personas");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(chartPanel);
-        frame.pack();
-        frame.setVisible(true);
+       
 
         // TODO add your handling code here:
     }//GEN-LAST:event_StatisticsButtonActionPerformed
@@ -211,26 +202,7 @@ public class principalWindow extends javax.swing.JFrame {
         ShowTop5Scores window = new ShowTop5Scores();
         window.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-    private static DefaultPieDataset createDataset(ArrayList<GenderType> genders) {
-        DefaultPieDataset dataset = new DefaultPieDataset();
 
-
-        // Iterar sobre la lista de géneros y agregar los datos al dataset
-        for (GenderType gender : genders) {
-            dataset.setValue(gender.getType()+ ": " + gender.getQuantity(), gender.getQuantity());
-        }
-
-        return dataset;
-    }
-    private static JFreeChart createPieChart(DefaultPieDataset dataset) {
-        return ChartFactory.createPieChart(
-                "Distribución de Géneros de Personas",  // Título del gráfico
-                dataset,                               // El dataset con los datos
-                true,                                  // Mostrar leyenda
-                true,                                  // Incluir herramienta de ayuda
-                false                                  // No incluir URL en los segmentos
-        );
-    }
 
     private void PersonsButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonsButton1ActionPerformed
         // TODO add your handling code here:

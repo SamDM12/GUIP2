@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -1154,10 +1155,11 @@ public class GetSetData {
         return rs;
     }
 
-    public ArrayList<GenderType> gendersGraphic (){
+    public ArrayList<GenderType> gendersGraphic (int year){
         ArrayList <GenderType> geners = getGenderTypes();
         try{
-            stmt = connection.getConn().prepareCall("{CALL GetCompetitorsByGender()}");
+            stmt = connection.getConn().prepareCall("{CALL GetCompetitorsByGender(?)}");
+            stmt.setInt(1, year);
             ResultSet result = stmt.executeQuery();
             while(result.next()){
                 String type = result.getString("g.GENDERTYPE");
@@ -1242,10 +1244,11 @@ public class GetSetData {
         return rs;
 
     }
-    public ArrayList<CompetitionType> getCompetitionGraphic(){
+    public ArrayList<CompetitionType> getCompetitionGraphic(int year){
         ArrayList<CompetitionType> competitions = new ArrayList<>();
         try{
-            stmt = connection.getConn().prepareCall("{CALL GetCompetitorsCountByCompetition()}");
+            stmt = connection.getConn().prepareCall("{CALL GetCompetitorsCountByCompetition(?)}");
+            stmt.setInt(1, year);
             ResultSet result = stmt.executeQuery();
             while (result.next()){
                 CompetitionType c = new CompetitionType(result.getString("COMPETITIONNAME"), result.getInt("cantidad_competidores"));
@@ -1325,5 +1328,50 @@ public class GetSetData {
         }
         
         return rs;
+    }
+    public ArrayList<CompetitionType> getRangeAge(int since, int to, int year){
+        ArrayList<CompetitionType> competitions = new ArrayList<>();
+        try{
+            stmt = connection.getConn().prepareCall("{CALL get_competitors_by_age_range(?,?,?,?,?)}");
+            stmt.setInt(1, year);
+            stmt.setInt(2, since);
+            stmt.setInt(3, to);
+            
+            stmt.registerOutParameter(4, Types.INTEGER);
+            stmt.registerOutParameter(5, Types.INTEGER);
+            stmt.execute();
+            
+            int inRange = stmt.getInt(4);
+            int outRange = stmt.getInt(5);
+            CompetitionType g = new CompetitionType("En el rango", inRange);
+            CompetitionType f = new CompetitionType("Fuera del rango", outRange);
+            competitions.add(g);
+            competitions.add(f);
+        
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return competitions;
+    }
+    public ArrayList<String> getPGyears(){
+        ArrayList<String> years = new ArrayList<>();
+        try{
+            stmt = connection.getConn().prepareCall("{CALL getYears()}");
+            ResultSet result = stmt.executeQuery();
+            while(result.next()){
+                String y = result.getInt("PARALYMPICS_YEAR")+ "";
+                years.add(y);
+            }
+        
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                      "Error SQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GetSetData.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return years;
     }
 }
