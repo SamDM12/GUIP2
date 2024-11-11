@@ -6,6 +6,7 @@ package GraphicInterface;
 
 import DBProcedures.GetSetData;
 import com.mycompany.project1db.CompetitionType;
+import com.mycompany.project1db.CompetitionXGender;
 import com.mycompany.project1db.GenderType;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -25,6 +26,7 @@ public class ShowST extends javax.swing.JFrame {
      */
     public ShowST() {
         initComponents();
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         addYears();
     }
 
@@ -46,6 +48,10 @@ public class ShowST extends javax.swing.JFrame {
         pgYearsCB2 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        STGendersButton1 = new javax.swing.JButton();
+        pgYearsCB3 = new javax.swing.JComboBox<>();
+        STGendersButton2 = new javax.swing.JButton();
+        pgYearsCB4 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +88,20 @@ public class ShowST extends javax.swing.JFrame {
 
         jLabel2.setText("Año olimpiada");
 
+        STGendersButton1.setText("Genero y deporte");
+        STGendersButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                STGendersButton1ActionPerformed(evt);
+            }
+        });
+
+        STGendersButton2.setText("Rango edad y deporte");
+        STGendersButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                STGendersButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -90,21 +110,25 @@ public class ShowST extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(STCompetitionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(STGendersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(STCompetitionAgeButton))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(STCompetitionButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(STGendersButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(STGendersButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(STGendersButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(STCompetitionAgeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pgYearsCB4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pgYearsCB1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pgYearsCB2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pgYearsCB, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(pgYearsCB, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pgYearsCB3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(jLabel1)
                         .addGap(85, 85, 85)
                         .addComponent(jLabel2)))
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +149,15 @@ public class ShowST extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(STGendersButton)
                     .addComponent(pgYearsCB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(STGendersButton1)
+                    .addComponent(pgYearsCB3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(STGendersButton2)
+                    .addComponent(pgYearsCB4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,6 +214,29 @@ public class ShowST extends javax.swing.JFrame {
     private void pgYearsCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pgYearsCBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pgYearsCBActionPerformed
+
+    private void STGendersButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STGendersButton1ActionPerformed
+        String y = (String)pgYearsCB3.getSelectedItem();
+        int year = Integer.parseInt(y);
+        ArrayList<CompetitionXGender> competitions = getSetElements.getCompXGender(year);
+        DefaultPieDataset dataset = createDatasetCXG(competitions);
+        JFreeChart pieChart = createPieChart(dataset, "Distribución de Personas por Deporte y género");
+        ChartPanel chartPanel = new ChartPanel(pieChart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(800, 600));
+        JFrame frame = new JFrame("Distribución de Personas por Deporte");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.getContentPane().add(chartPanel);
+        frame.pack();
+        frame.setVisible(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_STGendersButton1ActionPerformed
+
+    private void STGendersButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STGendersButton2ActionPerformed
+        String y = (String)pgYearsCB4.getSelectedItem();
+        int year = Integer.parseInt(y);
+        ShowSTRangeAgeCompetitions window = new ShowSTRangeAgeCompetitions(year);
+        window.setVisible(true);         // TODO add your handling code here:
+    }//GEN-LAST:event_STGendersButton2ActionPerformed
 private static DefaultPieDataset createDataset(ArrayList<GenderType> genders) {
         DefaultPieDataset dataset = new DefaultPieDataset();
 
@@ -193,6 +248,20 @@ private static DefaultPieDataset createDataset(ArrayList<GenderType> genders) {
 
         return dataset;
     }
+private static DefaultPieDataset createDatasetCXG(ArrayList<CompetitionXGender> comp) {
+        DefaultPieDataset dataset = new DefaultPieDataset();
+
+
+        // Iterar sobre la lista de géneros y agregar los datos al dataset
+        for (CompetitionXGender competition : comp) {
+            for (GenderType gender : competition.getGenders()) {
+                dataset.setValue(competition.getCompetitionName() + ", " + gender.getType() +": " + gender.getQuantity(), gender.getQuantity());
+            }
+        }
+        return dataset;
+    }
+
+
 private static DefaultPieDataset createDatasetCompetition(ArrayList<CompetitionType> competitions) {
         DefaultPieDataset dataset = new DefaultPieDataset();
 
@@ -218,8 +287,10 @@ private static DefaultPieDataset createDatasetCompetition(ArrayList<CompetitionT
     private void addYears(){
         ArrayList<String> years = getSetElements.getPGyears();
         for(String y : years){
+            pgYearsCB4.addItem(y);
             pgYearsCB.addItem(y);
             pgYearsCB2.addItem(y);
+            pgYearsCB3.addItem(y);
             pgYearsCB1.addItem(y);
         }
         
@@ -264,11 +335,15 @@ private static DefaultPieDataset createDatasetCompetition(ArrayList<CompetitionT
     private javax.swing.JButton STCompetitionAgeButton;
     private javax.swing.JButton STCompetitionButton;
     private javax.swing.JButton STGendersButton;
+    private javax.swing.JButton STGendersButton1;
+    private javax.swing.JButton STGendersButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> pgYearsCB;
     private javax.swing.JComboBox<String> pgYearsCB1;
     private javax.swing.JComboBox<String> pgYearsCB2;
+    private javax.swing.JComboBox<String> pgYearsCB3;
+    private javax.swing.JComboBox<String> pgYearsCB4;
     // End of variables declaration//GEN-END:variables
 }
