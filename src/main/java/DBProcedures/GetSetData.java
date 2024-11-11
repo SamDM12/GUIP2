@@ -1374,4 +1374,57 @@ public class GetSetData {
         }
         return years;
     }
+    public ArrayList<CompetitionXGender> getCompXGender(int year){
+        ArrayList<CompetitionXGender> competitions = new ArrayList<>();
+        
+        try {
+            stmt = connection.getConn().prepareCall("{CALL GetCompetitorsByGenderAndCompetition(?)}");
+            stmt.setInt(1, year);
+            ResultSet result = stmt.executeQuery();
+            while (result.next()) {
+                String competitionName = result.getString("COMPETITIONNAME");
+                String genderType = result.getString("GENDERTYPE");
+                int competitorsCount = result.getInt("cantidad_competidores");
+                CompetitionXGender competition = findOrCreateCompetition(competitions, competitionName);
+                GenderType gender = findOrCreateGender(competition.getGenders(), genderType);
+                
+                // Actualizamos la cantidad de competidores por género
+                gender.setQuantity(gender.getQuantity() + competitorsCount);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar el procedimiento:\n" + ex.getMessage(), 
+                                          "Error SQL", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return competitions;
+    }
+
+    // Método para buscar o crear un objeto CompetitionXGender
+    private CompetitionXGender findOrCreateCompetition(ArrayList<CompetitionXGender> competitions, String competitionName) {
+        for (CompetitionXGender competition : competitions) {
+            if (competition.getCompetitionName().equals(competitionName)) {
+                return competition;
+            }
+        }
+        
+        // Si no existe, creamos uno nuevo
+        CompetitionXGender newCompetition = new CompetitionXGender(competitionName, new ArrayList<>());
+        competitions.add(newCompetition);
+        return newCompetition;
+    }
+
+    // Método para buscar o crear un objeto GenderType en la lista de géneros de una competencia
+    private GenderType findOrCreateGender(ArrayList<GenderType> genders, String genderType) {
+        for (GenderType gender : genders) {
+            if (gender.getType().equals(genderType)) {
+                return gender;
+            }
+        }
+        
+        // Si no existe, creamos uno nuevo
+        GenderType newGender = new GenderType(genderType);
+        genders.add(newGender);
+        return newGender;
+    }
+    
 }

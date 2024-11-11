@@ -47,16 +47,18 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="STCompetitionButton" max="32767" attributes="0"/>
-                              <Component id="STGendersButton" max="32767" attributes="0"/>
-                              <Component id="STCompetitionAgeButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="STGendersButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="STCompetitionButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="STCompetitionAgeButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="STGendersButton1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="pgYearsCB1" min="-2" pref="125" max="-2" attributes="0"/>
                               <Component id="pgYearsCB2" min="-2" pref="125" max="-2" attributes="0"/>
                               <Component id="pgYearsCB" min="-2" pref="125" max="-2" attributes="0"/>
+                              <Component id="pgYearsCB3" min="-2" pref="125" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -93,7 +95,12 @@
                       <Component id="STGendersButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="pgYearsCB1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="168" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="STGendersButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="pgYearsCB3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="133" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -165,6 +172,24 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="A&#xf1;o olimpiada"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="STGendersButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Genero y deporte"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="STGendersButton1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="pgYearsCB3">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
