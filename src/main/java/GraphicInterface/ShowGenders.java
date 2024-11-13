@@ -6,9 +6,12 @@ package GraphicInterface;
 
 import Connection.DataBaseConnection;
 import DBProcedures.GetSetData;
+import com.mycompany.project1db.GenderType;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,53 +20,27 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ShowGenders extends javax.swing.JFrame {
     GetSetData Elements = new GetSetData();
+    private DefaultTableModel mt = new DefaultTableModel();
 
     /**
      * Creates new form ShowGenders
      */
     public ShowGenders() {
         initComponents();
-        loadDataFromDatabase();
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        loadGenders();
+        
     }
-    private void loadDataFromDatabase() {
-        //String URL = "jdbc:mysql://localhost:3306/ParalympicGames";
-        //String USER = "root";
-        //String PASSWORD = "LulU2005";
-        //String query = "SELECT * FROM Person";
-             DataBaseConnection connectionC = new DataBaseConnection();
-             ResultSet rs = null;
-             
-             
-             
-        try {
-            rs = Elements.getGenders(rs);  
-            ResultSetMetaData rsmd;
-            rsmd = rs.getMetaData();
-            int columnCount = rsmd.getColumnCount();
-            
-            // Crear el modelo de tabla con los nombres de columna
-            DefaultTableModel model = (DefaultTableModel) PersonTable.getModel();
-            model.setRowCount(0); // Limpiar cualquier dato previo
-            model.setColumnCount(0); // Limpiar columnas previas
-
-            for (int i = 1; i <= columnCount; i++) {
-                model.addColumn(rsmd.getColumnName(i));
-            }
-
-            // Añadir filas al modelo de tabla
-            while (rs.next()) {
-                Object[] row = new Object[columnCount];
-                for (int i = 1; i <= columnCount; i++) {
-                    row[i - 1] = rs.getObject(i);
-                }
-                model.addRow(row);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+    public void loadGenders(){
+        String ids[] ={"Tipo de género"};
+        mt.setColumnIdentifiers(ids);
+        gendersTable.setModel(mt);
+        ArrayList<GenderType> gendersNames = Elements.getGenderTypes();
+        for(GenderType g : gendersNames){
+            mt.addRow(new Object[]{g.getType()});
         }
-            
-    }
-
+        
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,29 +51,14 @@ public class ShowGenders extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        PersonTable = new javax.swing.JTable();
         jButton13 = new javax.swing.JButton();
         label1 = new java.awt.Label();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        gendersTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
-
-        PersonTable.setBackground(new java.awt.Color(204, 204, 204));
-        PersonTable.setBorder(new javax.swing.border.MatteBorder(null));
-        PersonTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Puntuacion Calificacion", "ID Persona", "ID Equipo"
-            }
-        ));
-        jScrollPane2.setViewportView(PersonTable);
 
         jButton13.setText("Regresar");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
@@ -112,35 +74,47 @@ public class ShowGenders extends javax.swing.JFrame {
         label1.setForeground(new java.awt.Color(102, 102, 102));
         label1.setText("Géneros");
 
+        gendersTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(gendersTable);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(377, 377, 377)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 277, Short.MAX_VALUE)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(265, 265, 265))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(377, 377, 377)
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton13)
-                .addGap(44, 44, 44))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -204,10 +178,10 @@ public class ShowGenders extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable PersonTable;
+    private javax.swing.JTable gendersTable;
     private javax.swing.JButton jButton13;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

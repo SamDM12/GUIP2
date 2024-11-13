@@ -36,7 +36,6 @@ public class ShowAdminWindow extends javax.swing.JFrame {
         if("".equals(lastName)) lastName = null;
         int identification;
         if("".equals(identificationTF.getText())){ 
-            System.out.println("true");
             identification = 0;
         }else{
             identification = Integer.parseInt(identificationTF.getText());

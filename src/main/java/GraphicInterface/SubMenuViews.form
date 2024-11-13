@@ -234,6 +234,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">
               <Properties>
@@ -260,11 +263,17 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Competiciones"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton6">
               <Properties>
@@ -278,54 +287,80 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton7">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Pa&#xed;ses"/>
-                <Property name="actionCommand" type="java.lang.String" value="Ver Pa&#xed;ses"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton8">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Discapacidades"/>
                 <Property name="actionCommand" type="java.lang.String" value="Ver Pa&#xed;ses"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton9">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver G&#xe9;neros"/>
                 <Property name="actionCommand" type="java.lang.String" value="Ver Pa&#xed;ses"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton9ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton10">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Tipos de Identificaci&#xf3;n"/>
                 <Property name="actionCommand" type="java.lang.String" value="Ver Pa&#xed;ses"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton11">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Medallas"/>
                 <Property name="actionCommand" type="java.lang.String" value="Ver Pa&#xed;ses"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton12">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Paraol&#xed;mpicos"/>
                 <Property name="actionCommand" type="java.lang.String" value="Ver Pa&#xed;ses"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton12ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton13">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Personas"/>
                 <Property name="actionCommand" type="java.lang.String" value="Ver Pa&#xed;ses"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton13ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton14">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Tipos de Tel&#xe9;fonos"/>
                 <Property name="actionCommand" type="java.lang.String" value="Ver Pa&#xed;ses"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton14ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton15">
               <Properties>
@@ -340,12 +375,18 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton15ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton16">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Equipos"/>
                 <Property name="actionCommand" type="java.lang.String" value="Ver Pa&#xed;ses"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton16ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton17">
               <Properties>
@@ -360,6 +401,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton17ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton18">
               <Properties>
@@ -374,6 +418,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton18ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
