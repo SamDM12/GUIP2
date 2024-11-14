@@ -77,6 +77,11 @@ public class SubMenuViews extends javax.swing.JFrame {
 
         jButton3.setText("Ver Entrenadores");
         jButton3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "!!", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 153, 255))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Ver Agenda");
         jButton4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "!!", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 153, 255))); // NOI18N
@@ -425,6 +430,12 @@ public class SubMenuViews extends javax.swing.JFrame {
         window.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        ShowCoaches window = new ShowCoaches();
+        window.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
